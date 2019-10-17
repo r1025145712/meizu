@@ -1,0 +1,790 @@
+.meizu-header-con{
+    width: 1240px;
+    height: 100%;
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+}
+.meizu-header{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    height: 82px;
+    /* overflow: hidden;  */
+}
+.meizu-header-logo {
+    float: left;
+    padding: 28px 0;
+}
+.meizu-header-logo-size{
+    display: block;
+    width: 125px;
+    height: 24px;
+    font-size:24px; 
+    margin-top: -4px;
+    font-weight: bold;
+    letter-spacing: 8px;
+    color: #00beff;
+}
+
+.meizu-cart{
+    position: relative;
+    right: 6px;
+    float: right;
+    margin: 27px 0 0 8px;
+    width: 29px;
+    height: 29px;
+    text-align: center;
+    font-size: 12px;
+    text-indent: 3px;
+    line-height: 10px;
+    background-position-y: center
+}
+.meizu-cart .iconfont{
+    color: #6C6C6C;
+    font-size: 30px;
+    position: relative;
+    top: 8px;
+    right: 6px;
+    z-index: 0;
+}
+.hua {
+    position: absolute;
+    top: -6px;
+    display: inline-block;
+    padding: 1px 3px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #fff;
+    background-color: #e1251b;
+    border-radius: 7px;
+    min-width: 12px;
+    text-align: center;
+}
+
+.meizu-header-user{
+    float: right;
+    padding: 26px 8px 0 12px;
+    text-align: right;
+    font-size: 12px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1050;
+}
+.meizu-header-user-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    width: 98px;
+    background-color: #fff;
+    top: 64px;
+    left: 50%;
+    border-radius: 2px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 15px 0;
+    margin-left: -48px;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+}
+.meizu-header-user li {
+    font-size: 12px;
+    display: block;
+    margin: 15px auto;
+}
+.meizu-header-user li a:hover{
+    color: #00beff;
+}
+.meizu-header-user li a {
+    position: relative;
+    z-index: 4;
+    color: #515151;
+}
+.meizu-header-user .iconfont{
+    color: #6C6C6C;
+    font-size: 24px;
+    position: relative;
+    z-index: 0;
+}
+.meizu-header-input{
+    position: relative;
+    float: right;
+    margin: 26px 5px 0 10px;
+    width: 170px;
+    height: 30px;
+    line-height: 29px;
+    font-size: 12px;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+}
+.meizu-header-input input{
+    display: block;
+    border: none;
+    padding: 0;
+    outline: 0;
+    width: 127px;
+    height: 20px;
+    margin-left: 15px;
+    margin-top: 5px;
+    transition: width .5s;
+    font-size: 12px;
+    line-height: 20px;
+    color: #333;
+    background: transparent;
+    box-sizing: content-box;
+    outline-offset: 0;
+}
+.meizu-header-input a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width: 36px;
+    height: 32px;
+    background-position: 50%;
+    cursor: pointer;
+}
+.meizu-header-input .iconfont{
+    color: #6C6C6C;
+    font-size: 18px;
+    left: 2px;
+    position: relative;
+    z-index: 0;
+}
+.meizu-header-list{
+    float: right;
+}
+.meizu-header-list li{
+    float: left;
+}
+.meizu-header-list a {
+    color: #6C6C6c;
+    display: block;
+    padding: 31px 20px 30px;
+    line-height: 21px;
+    font-size: 14px;
+    transition: color .1s linear;
+}
+.meizu-header-list a:hover{
+    color: #00beff;
+}
+.meizu-header-shop{
+    display: flex;
+    width: 1140px;    
+    height: auto;   
+    padding:0 50px;
+    justify-content:space-around;
+    align-items: flex-start;
+    
+}
+.meizu-header-shop_sj{
+    width: 80px;
+    height: 100px;
+    margin-top:20px; 
+    opacity: 0.4;
+    cursor: pointer;
+}
+.meizu-header-shop_sj:hover{
+    opacity: 1; 
+}
+.meizu-header-shop img{
+    display: block;
+    width: 80px;
+    height: 100px;
+    margin-left: 10px;  
+}
+.meizu-header-shop p,.meizu-header-shop span{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap; 
+    display: block;
+    width: 120px;
+    font-size: 12px;
+    height: 12px;
+    margin-top:5px;  
+    text-align: center;
+    line-height: 12px; 
+}
+/* 内容 */
+.page-sku {
+    position: relative;
+    top: 80px;
+    padding-top: 66px;
+    height: 800px;
+}
+.fast-nav{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #f6f8fb;
+}
+.fast-nav .container {
+    position: relative;
+    width: 1240px;
+    height: 70px;
+    margin: 0 auto;
+}
+.fast-nav .ulist {
+    float: right;
+    margin-top: 26px;
+    margin-right: -15px;
+}
+.ulist li {
+    float: left;
+    position: relative;
+    z-index: 1;
+    border-right: 1px solid #dedede;
+}
+.ulist li a {
+    display: block;
+    padding: 0 20px;
+    line-height: 20px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    transition: color .3s;
+}
+.fast-nav .name {
+    position: absolute;
+    left: 0;
+    top: 15px;
+    font-size: 26px;
+}
+/* 主界面 */
+.row-container {
+    width: 1240px;
+    height: 800px;
+    /* background: #ccc; */
+    margin-left: auto;
+    margin-right: auto;
+}
+.row-left{
+    float: left;
+    width: 560px;
+    height: 740px;
+    position: relative;
+    margin-right: 40px;
+}
+.booth{
+    margin: 8px 0;
+    width: 560px;
+    height: 560px; 
+    position: relative;
+}
+.booth img{
+    width: 560px;
+    height: 560px;
+    opacity: 1;
+}
+#frame{
+    display: none;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    cursor: move;
+}
+.booth-nav{
+    overflow: hidden;
+    margin-top: 10px;
+    margin-left: 24px;
+    position: relative;
+    z-index: 200;
+}
+.booth-nav li {
+    position: relative;
+    display: inline-block;
+    margin: 0 24px;
+    overflow: hidden;
+    height: 102px;
+}
+.booth-nav li  img {
+    position: relative;
+    max-width: 80px;
+    max-height: 80px;
+    cursor:pointer;
+}
+.pic-bar{
+    position: absolute;
+    width: 60px;
+    height: 2px;
+    left: 10px;
+    bottom: 10px;
+    background-color: #b7b7b7;
+    border-radius: 1px;
+    display: none;
+}
+#expand{
+    position: relative;
+    width: 560px;
+    height: 560px;
+    z-index: 100;
+    left: 500px;;
+    bottom: 600px;
+    background: #ccc;
+    overflow: hidden;
+    display: none;
+}
+#expand img{
+    position: absolute;
+    width: 2800px;
+    height: 2800px;
+}
+/* 右边 */
+.row-right{
+    position: relative;
+    float: left;
+    width: 640px;
+    height: 900px;
+    font-size: 12px;
+    padding-top: 25px;
+}
+.property-hd{
+    position: relative;
+    padding-top: 30px;
+    margin-bottom: 12px;
+}
+.property-hd h1{
+    margin-bottom: 4px;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #262626;
+}
+.property-hd .mod-info.active{
+    color: #e22841;
+    font-size: 14px;
+}
+.property-sell {
+    position: relative;
+    background: #f4f6fa;
+    padding: 16px 0 12px;
+}
+.property-sell-price {
+    height: 36px;
+    overflow: hidden;
+    padding-left: 10px;
+    
+}
+.property-sell-price .mod-price {
+    margin-right: 8px;
+    line-height: 36px;
+}
+.mod-price small {
+    font-size: 24px;
+    color: #e02b41;
+}
+.property-sell-price .mod-price .vm-money {
+    color: #e02b41;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.product-details{
+    border-bottom: 1px dashed #dedede;
+    padding: 18px 0;
+    width: 640px;
+    height: 20px;
+}
+
+.product-details .p4 {
+    font-size: 12px;
+    margin-bottom: 30px;
+    height: 20px;
+    position: relative;
+
+}
+
+.product-details .p4 a {
+    color: #8c8c8c;
+    position: relative;
+    margin-left: 10px;
+    padding-left: 20px
+}
+
+.product-details .p4 span {
+    color: #8c8c8c;
+    position: relative;
+    margin-left: 10px;
+    padding-left: 20px
+}
+
+.product-details .p4 span i {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    bottom: 1px;
+    background: url(../img/huabei.png) no-repeat;
+    background-size: 16px 16px;
+}
+
+.product-details .p4 a b {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    bottom: 1px;
+    background: url('../img/huan.png') no-repeat;
+    background-size: 16px 16px;
+}
+
+.product-details .p4 span strong {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    bottom: 1px;
+    background: url('../img/men.png') no-repeat;
+    background-size: 16px 16px;
+}
+
+/* 版本 */
+.c_con {
+    width: 585px;
+    height: auto;
+    padding-bottom: 30px;
+}
+
+.c_type {
+    width: 585px;
+    height: auto;
+
+}
+
+.p_color {
+    font-size: 14px;
+    line-height: 14px;
+    color: #666;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.c_list {
+    height: auto;
+    display: flex;
+    margin: -10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.c_list_1 {
+    width: 178px;
+    height: 42px;
+    margin: 10px;
+    position: relative;
+    display: inline-block;
+    border: 1px solid #dce1e4;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    border-radius: 4px;
+}
+.radio-text {
+    position: relative;
+    line-height: 42px;
+    font-size: 16px;
+    color: #595959;
+}
+
+.radio-color {
+    position: relative;
+    display: inline-block;
+    background-color: transparent;
+    vertical-align: middle;
+    margin-top: -5px;
+    margin-right: 0;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+}
+
+.product-config .config-name {
+    font-size: 14px;
+    line-height: 14px;
+    color: #666;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.oc-input-number {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #dce1e4;
+    width: 196px;
+    height: 44px;
+    overflow: hidden;
+}
+
+.oc-input-number .input-number-input input {
+    text-align: center;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 11px 23px;
+    line-height: 1;
+}
+
+.oc-input-number .input-jian {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    text-align: center;
+    overflow: hidden;
+    background: url("../img/jian.png") no-repeat center center;
+    background-size: 20px 20px;
+    width: 70px;
+    height: 42px;
+}
+
+.oc-input-number .input-jia {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    width: 70px;
+    height: 42px;
+    background: url("../img/jia.png") no-repeat center center;
+    background-size: 20px 20px;
+}
+
+.buying-btn-list {
+    display: flex;
+    width: 530px;
+    margin: -20px;
+}
+
+.btn-size-master {
+    width: 196px;
+    height: 60px;
+    line-height: 60px;
+}
+
+.btn-lesser {
+    color: #666;
+    background-color: #F4F4F4;
+    font-size: 16px;
+}
+
+.oc-btn {
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    background-image: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color 0.35s ease;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+.btn-size-master {
+    width: 196px;
+    height: 60px;
+    line-height: 60px;
+}
+
+.btn-master {
+    color: #fff;
+    background-color: #05B570;
+    font-size: 16px;
+}
+
+/* 底部 */
+.meizu-footer {
+    font-size: 14px;
+    color: #515151;
+    position: relative;
+    width: 100%;
+    height: 246px;
+    padding-top: 80px;
+    background-color: #fff;
+}
+.meizu-footer .meizu-footer-link {
+    padding: 48px 0 20px;
+    border-top: 1px solid #f1f1f1;
+}
+.meizu-footer-wrap {
+    max-width: 1240px;
+    height: 177px;
+    margin: 0 auto;
+}
+.meizu-footer-top{
+    max-width: 1240px;
+    height: 84px;
+    position: relative;
+}
+.meizu-footer-service{
+    width: 1000px;
+    float: left;
+}
+.meizu-footer-service li {
+    float: left;
+    text-align: center;
+    width: 15%;
+}
+.meizu-footer-service li a {
+    display: block;
+    overflow: hidden;
+    line-height: 27px;
+    font-size: 12px;
+    color: #666;
+}
+.meizu-footer-service li img {
+    width: 50px;
+    display: block;
+    margin: 0 auto;
+}
+.meizu-footer-service li span {
+    line-height: 30px;
+    color: #999;
+}
+.meizu-footer .onlive-server {
+    float: right;
+    text-align: right;
+    margin-top: -18px;
+}
+.onlive-server span {
+    color: #999;
+    font-size: 12px;
+    line-height: 30px;
+}
+#meizu-footer .onlive-server .tel {
+    color: #00c3f5;
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: -6px;
+    line-height: 40px;
+}
+.onlive-server .onlive-btn {
+    height: 30px;
+    padding: 0 16px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 20px;
+    margin-top: 3px;
+    display: inline-block;
+    font-size: 14px;
+    background: #0bbbef;
+}
+.footer-hr {
+    margin: 10px auto 28px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 0;
+}
+.meizu-row {
+    max-width: 1240px;
+    position: relative;
+}
+.meizu-row-info {
+    color: #999;
+    text-align: left;
+    font-size: 12px;
+    float: left;
+    width: 100%;
+}
+.meizu-row-info ul{
+    height: 18px;
+}
+
+.meizu-row-info ul li {
+    padding-right: 15px;
+    border-right: 1px solid #d6d6d6;
+    float: left;
+    height: 18px;
+    margin-right: 15px;
+}
+.meizu-row-info ul li:nth-last-child(1){
+    border: none;
+}
+.meizu-row-info ul a {
+    display: block;
+    color: #999;
+    line-height: 18px;
+}
+.meizu-row-info ul a:hover{
+    color: #0bbbef;
+}
+.meizu-footer-certificate {
+    padding-top: 8px;
+    height: 35px;
+}
+.meizu-footer-certificate a{
+    color: #999;
+}
+.meizu-footer-certificate a:hover{
+    color: #0bbbef;
+}
+.foot-sub{
+    float: right;
+    position: relative;
+}
+.foot-sub a {
+    width: 40px;
+    height: 30px;
+}
+.foot-sub a img {
+    position: absolute;
+    bottom: 40px;
+    width: 180px;
+    left: -9px;
+    display: none;
+}
+.foot-sub .foot-sub-img1{
+    background: url("../img/foot/d1.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img2{
+    background: url("../img/foot/d2.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img3{
+    background: url("../img/foot/d3.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img4{
+    background: url("../img/foot/d4.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 4px;
+    margin-right: 20px;  
+}
+
+

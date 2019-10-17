@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品列表页</title>
+    <link rel="icon" type="image/x-icon" href="img/panda.ico" />
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script src="js/Ajax.js"></script>
+    <script src="js/Cart.js"></script>
+    <!-- <script src="js/jquery-3.3.1.js"></script> -->
+    <script>
+        function yun() {
+            // function read() {
+            //     let _ajax = new Ajax();
+            //     _ajax.request({
+            //         url: "js/reader4.php",
+            //         success: function (_data) {
+            //             _data = eval("(" + _data + ")");
+            //             console.log(_data.list)
+            //             render(_data.list)
+            //             event(_data.list);
+            //         }
+            //     })
+            // }
+            // function render(_list) {
+            //     let item = '';
+            //     // for (let j = 0; j < 2; j++) {
+            //     for (let i = 0; i < 8; i++) {
+            //         item +=
+            //             '<li class="phone3">' +
+            //             '<div class="section-item-box">' +
+            //             '<a href="cart.html?id=' + _list[i].ID + '">' +
+            //             '<img src="img/phone/' + _list[i].image + '" alt="">' +
+            //             '<span class="box-info ">' +
+            //             '<span class="goods-desc">已售：' + _list[i].volume + '件</span>' +
+            //             '<span class="goods-name">' + _list[i].name + '</span>' +
+            //             '<span class="goods-desc">' + _list[i].price + '</span>' +
+            //             '<span class="goods-price"><i>￥</i>' + _list[i].money1 + '<em></em><s></s>' +
+            //             '</span>' +
+            //             '</span>' +
+            //             '</a>' +
+            //             '</div>' +
+            //             '</li>';
+            //     }
+            //     // }
+            //     document.querySelector(".phone-agg").innerHTML = item;
+            // }
+            //     function event(_item) {
+            //         var _rank = document.getElementById("phone_con");
+            //         var _rmb = document.getElementById("money");
+            //         _rmb.onclick = function () {//价格升序
+            //             _rank.innerHTML = "";
+            //             sort(_item, "money1", 1);
+            //         }
+            //         var _rmb1 = document.getElementById("money1");
+            //         _rmb1.onclick = function () {//价格降序
+            //             _rank.innerHTML = "";
+            //             sort(_item, "money1", -1);
+            //         }
+            //         var _sold = document.getElementById("sold");
+            //         _sold.onclick = function () {//销量升序
+            //             _rank.innerHTML = "";
+            //             sort(_item, "volume", 1);
+            //         }
+            //         var _sold1 = document.getElementById("sold1");
+            //         _sold1.onclick = function () {//销量降序
+            //             _rank.innerHTML = "";
+            //             sort(_item, "volume", -1);
+            //         }
+            //     }
+            //     function sort(_data, _field, _asc) {
+            //         var _empty = null;
+            //         for (var n = 0; n < _data.length - 1; n++) {
+            //             for (var m = 0; m < _data.length - 1; m++) {
+            //                 if (_data[m][_field] * _asc > _data[m + 1][_field] * _asc) {
+            //                     _empty = _data[m];
+            //                     _data[m] = _data[m + 1];
+            //                     _data[m + 1] = _empty
+            //                 }
+            //             }
+            //         }
+            //         render(_data);
+            //     }       
+            // 
+        }
+        // function main() {
+        //     yun();
+        // }
+        window.onload = function () {
+            // yun();
+        };
+    </script>
+</head>
+
+<body>
+    <section class="meizu-header" id="meizu-header">
+        <section class="meizu-header-con">
+            <div class="meizu-header-logo">
+                <a href="meizu.html" class="meizu-header-logo-size">MEIZU</a>
+            </div>
+            <a href="" class="meizu-cart">
+                <i class="iconfont icon-gouwuche"></i>
+                <i class="hua">0</i>
+            </a>
+            <div class="meizu-header-user">
+                <i class="iconfont icon-ren-copy"></i>
+                <ul class="meizu-header-user-dropdown">
+                    <li><a href="#" target="_blank" data-mtype="gw_public_yt_center_login">立即登录</a></li>
+                    <li><a href="#" target="_blank" data-mtype="gw_public_yt_center_reg">立即注册</a></li>
+                    <li><a href="#" target="_blank" data-mtype="gw_public_yt_center_order_0">我的订单</a></li>
+                    <li><a href="#" target="_blank" data-mtype="gw_public_yt_center_mcode_0">M码通道</a></li>
+                </ul>
+            </div>
+            <div class="meizu-header-input">
+                <input type="text" name="" id="" placeholder="魅族 16s Pro">
+                <a href="">
+                    <i class="iconfont icon-sousuo"></i>
+                </a>
+            </div>
+            <ul class="meizu-header-list">
+                <li><a href="#">手机</a></li>
+                <li><a href="#">声学</a></li>
+                <li><a href="#">配件</a></li>
+                <li><a href="#">生活</a></li>
+                <li><a href="#">Flyme</a></li>
+                <li><a href="#">服务</a></li>
+                <li><a href="#">专卖店</a></li>
+                <li><a href="#">社区</a></li>
+                <li><a href="#">App下载</a></li>
+            </ul>
+            <section class="meizu-header-shop" id="header-shop">
+                <!-- <div class="meizu-header-shop_sj">
+                            <img src="img/header/sj8.jpg" alt="">
+                            <p>魅族16s pro</p>
+                            <span>￥2699</span>
+                        </div> -->
+            </section>
+        </section>
+    </section>
+    <section class="list-container">
+        <div class="list-title">
+            <h1 class="title ">
+                <span id="title-category">手机</span>
+                <div class="title-filter" id="filter">
+                    <div class="filter-order" id="J_filterOrder">
+                        <a href="#" data-tag="1" id="money" sort='desc' onclick="sort('p_money1',this)"
+                            data-mtype="store_list_sx_2">价格降序</a>
+                        <a class="price arrow-down" id="xl" href="#" id="money1" sort='desc' onclick="sort('p_volume',this)" data-tag="2"
+                            data-mtype="store_list_sx_3">销量降序</a>
+                    </div>
+                </div>
+            </h1>
+        </div>
+    </section>
+    <div class="section-phone">
+        <div class="section-phone-row">
+            <div class="section-phone-wrapper">
+                <ul class="phone-agg" id="phone_con">
+                    <!-- <li class="phone3">
+                        <div class="section-item-box">
+                            <a href="#">
+                                <img src="img/phone/sx1.png" alt="">
+                                <span class="box-info ">
+                                    <span class="goods-name">魅族 POP2 真无线蓝牙耳机</span>
+                                    <span class="goods-desc">【限时3期免息】蓝牙5.0 超长续航</span>
+                                    <span class="goods-price"><i>￥</i>399<em></em><s></s>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                    </li> -->
+                </ul>
+                <ul class="pagination">
+                    <!-- <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="meizu-footer">
+        <div class="meizu-footer-link">
+            <div class="meizu-footer-wrap">
+                <div class="meizu-footer-top">
+                    <ul class="meizu-footer-service">
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f1.png" alt="">
+                                <span>满80免运费</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f2.png" alt="">
+                                <span>100+ 城市次日送达</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f3.png" alt="">
+                                <span>7天无理由退货</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f4.png" alt="">
+                                <span>15天换货保障</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f5.png" alt="">
+                                <span>1年免费保修</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f6.png" alt="">
+                                <span>上门快修</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="onlive-server meizu-footer-hotline"><span>周一至周日 8:00-20:00</span>
+                        <p class="tel">400-788-3333</p>
+                        <a class="onlive-btn" href="http://url.meizu.com/ols_PC" ">在线客服</a>
+                            </div>
+                        </div>
+                        <hr class=" footer-hr">
+                            <div class="meizu-row">
+                                <div class="meizu-row-info">
+                                    <ul>
+                                        <li><a href="#">了解魅族</a></li>
+                                        <li><a href="#">加入我们</a></li>
+                                        <li><a href="#">联系我们</a></li>
+                                        <li><a href="#">Flyme</a></li>
+                                        <li><a href="#">魅族社区</a></li>
+                                        <li><a href="#">天猫旗舰店</a></li>
+                                        <li><a href="#">问题反馈</a></li>
+                                        <li><a href="#">线上销售授权名单公示</a></li>
+                                        <li><a href="#">出版物经营许可证</a></li>
+                                        <li><a href="#">简体中文</a></li>
+                                    </ul>
+                                    <div class="meizu-footer-certificate">
+                                        ©2019 Meizu Telecom Equipment Co., Ltd. All rights
+                                        reserved.&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="#">粤ICP备13003602号</a>
+                                        <a href="#">合字B2-20170010</a>
+                                        <a href="#">营业执照</a>
+                                        <a href="#">法律声明</a>
+                                        粤公网安备 44049102496009 号
+                                        <div class="foot-sub">
+                                            <a href="#">
+                                                <img src="img/foot/d11.png" alt="">
+                                                <i class="foot-sub-img1"></i>
+                                            </a>
+                                            <a href="#">
+                                                <img src="img/foot/d22.jpg" alt="">
+                                                <i class="foot-sub-img2"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="foot-sub-img3"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="foot-sub-img4"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+<script src="js/meizu.js"></script>
+</html>

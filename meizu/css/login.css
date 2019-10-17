@@ -1,0 +1,342 @@
+body #app,
+html {
+    height: 100%;
+}
+
+body {
+    font-size: 14px;
+    background-color: #fff;
+    font-family: "sans-serif", Microsoft YaHei, Source Han Sans CN, Arial;
+}
+
+.index {
+    height: 100%;
+    background-image: url(bj.png);
+}
+
+.header {
+    background: transparent;
+    position: relative;
+    font-family: FZYOUH_508R--GB1-4;
+    display: block;
+    width: 100%;
+    height: 78px;
+    line-height: 78px;
+    /* background: #fff; */
+    padding: 0 65px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.header .header_wrap {
+    /* width: 894px; */
+    /* margin: 0 auto; */
+    height: 100%;
+}
+
+.header .header_link {
+    float: left;
+}
+
+.header a {
+    font-family: MyriadPro-Regular;
+    height: 78px;
+    line-height: 78px;
+    font-size: 14px;
+    color: #7f7f7f;
+    margin-right: 27px;
+}
+
+.header .header_language {
+    text-align: center;
+    float: right;
+    width: 90px;
+    height: 20px;
+    position: relative;
+    color: #7f7f7f;
+    font-size: 14px;
+}
+
+.header a.header_faq {
+    color: #7f7f7f !important;
+    font-size: 14px;
+    margin-right: 27px;
+    float: right;
+    cursor: pointer;
+}
+
+.header .header_wrap .changeBox {
+    width: 110px;
+    text-align: center;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 20;
+    top: 60px;
+    right: 0;
+    overflow: hidden;
+    display: none;
+    -webkit-box-shadow: 0 0 5px #d3d3d3;
+    box-shadow: 0 0 5px #d3d3d3;
+}
+
+.header .header_language .ic_down {
+    height: 0;
+    width: 0;
+    display: inline-block;
+    border: 5px solid transparent;
+    border-top-color: #7f7f7f;
+    margin-left: 10px;
+    margin-bottom: -1px;
+}
+
+.header .header_wrap .changeBox div {
+    padding: 5px 20px;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+}
+
+.header .header_wrap .changeBox div:hover {
+    background: #F7F8FB;
+}
+
+.box_boxLarge {
+    height: auto;
+    position: relative;
+    width: 960px;
+    margin: 0 auto 44px;
+    border: none;
+    border-radius: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.boxLarge {
+    height: 100px;
+}
+
+._logo {
+    width: 960px;
+    height: 25px;
+    margin: 25px auto 15px;
+    height: 25px;
+    font-size: 30px;
+    text-align: center;
+    color: #343434;
+}
+
+.boxLarge p {
+    font-size: 13px;
+    color: #000;
+    margin-top: 25px;
+    text-align: center;
+    letter-spacing: 0;
+}
+
+.box_content {
+    width: 425px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.index .index_content {
+    width: 380px;
+    position: relative;
+    border-radius: 8px;
+    min-height: 375px;
+    margin: 0 auto;
+    background: #fff;
+    padding-top: 50px;
+}
+
+.index .code_icon {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+}
+
+.index .code_icon div.code_tips {
+    position: absolute;
+    top: 0;
+    right: 26px;
+    height: 26px;
+    width: 66px;
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center;
+    color: #7f7f7f;
+}
+
+.index .tab {
+    font-family: "sans-serif";
+    font-weight: 500;
+    margin: 0 auto 30px;
+    width: 320px;
+    color: #000;
+    text-align: center;
+}
+
+.index .tab .tab_item.active {
+    display: block;
+    color: #000;
+}
+
+.index .index_content .tabloginway {
+    width: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.index .index_content .tabloginway p.on {
+    color: #000;
+}
+
+.index .index_content .tabloginway p:first-child:after {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    display: block;
+    width: 1px;
+    height: 12px;
+    margin-top: -6px;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.index .index_content .tabloginway p {
+    width: 50%;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    font-size: 16px;
+    color: rgba(0, 0, 0, .5);
+    position: relative;
+    font-weight: 500;
+}
+
+.index_content .zoneInput {
+    width: 300px;
+    position: relative;
+    width: 342px;
+    margin: 9px auto;
+    margin-top: 20px;
+}
+
+.index_content .zoneInput input {
+    display: block;
+    width: 300px;
+    height: 48px;
+    margin: 10px auto;
+    background: #f7f7f7;
+    border-radius: 9px;
+    box-sizing: border-box;
+    text-indent: 16px;
+    font-size: 14px;
+    color: #000;
+    position: relative;
+}
+
+.input_password {
+    width: 300px;
+    height: 74px;
+    position: relative;
+    margin: 10px auto;
+}
+
+.input_password i img {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 13px;
+    right: 13px;
+}
+
+.voice_btn {
+    position: relative;
+    overflow: hidden;
+    margin-top: 9px;
+}
+
+.forgetpwd {
+    color: rgba(0, 0, 0, .6);
+    font-size: 12px;
+}
+
+.passlogin {
+    display: block;
+    width: 300px;
+    margin: 9px auto;
+    background-color: #2ad181;
+    opacity: .3;
+    border-radius: 9px;
+    margin-top: 26px;
+}
+
+.primary_btn {
+    position: relative;
+    display: block;
+    width: 300px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin: 9px auto;
+    font-size: 15px;
+  
+    color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: .1s;
+}
+.registerTips {
+    color: #ec5b66;
+    font-size: 12px;
+    margin-top: 6px;
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
+.index .linkContainer {
+    width: 300px;
+    margin: 6px auto 0;
+    padding-bottom: 26px;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+.index .linkContainer a {
+    color: rgba(0, 0, 0, .6);
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.index .linkContainer a:last-child {
+    color: #2ad181;
+}
+
+.link:hover {
+    opacity: .8;
+}
+
+.footer {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 57px;
+}
+
+.footer p {
+    font-family: MyriadPro-Regular;
+    font-size: 12px;
+    color: #9b9b9b;
+    text-align: center;
+}
+
+.footer p span {
+    margin-left: 5px;
+}

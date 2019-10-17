@@ -1,0 +1,513 @@
+.meizu-header-con {
+    width: 1240px;
+    height: 100%;
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+}
+.meizu-header-logo {
+    float: left;
+    padding: 28px 0;
+}
+
+.meizu-header-logo-size {
+    display: block;
+    width: 125px;
+    height: 24px;
+    font-size: 24px;
+    margin-top: -4px;
+    font-weight: bold;
+    letter-spacing: 8px;
+    color: #00beff;
+}
+.cart{
+    width: 100%;
+    min-height: 320px;
+    padding-bottom: 40px;
+    overflow: hidden;
+    background-color: #F4F6FA;
+}
+.mz-container {
+    width: 1240px;
+    height: 100%;
+    margin: 0 auto;
+}
+.cart .cart-header {
+    height: 50px;
+    margin-top: 10px;
+    font-size: 12px;
+    background-color: #fff;
+    color: rgba(51,51,51,.4);
+    border-bottom: 1px solid #EFEFEF;
+}
+.cart .cart-col-select {
+    width: 550px;
+    text-align: left;
+    padding-left: 24px;
+}
+.cart .cart-select-all {
+    display: inline-block;
+    vertical-align: middle;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 0;
+    user-select: none;
+}
+.mz-checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #BDBDBD;
+    border-radius: 2px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 10px;
+    line-height: 17px;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 5px;
+}
+#master{
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #BDBDBD;
+    border-radius: 2px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 10px;
+    line-height: 17px;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 5px;
+}
+.cart .cart-select-all {
+    display: inline-block;
+    vertical-align: middle;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 0;
+    user-select: none;
+}
+.cart .cart-col-price {
+    width: 220px;
+    text-align: center;
+}
+.cart .cart-col-number {
+    width: 200px;
+    text-align: center;
+}
+.cart .cart-col-total {
+    width: 160px;
+    text-align: center;
+}
+.cart .cart-col-ctrl {
+    width: 110px;
+    text-align: right;
+    color: #00c3f5;
+    padding-right: 48px;
+    cursor: pointer;
+}
+#fushu{
+    margin: 10px 0 10px 0;
+    width: 1240px;
+}
+.cart-merchant-list{
+    margin: 10px 0 10px 0;
+    width: 1240px;
+    min-height: 150px;
+    position: relative;
+    background: #fff;
+}
+.cart-merchant-list .cart-col-select {
+    width: 550px;
+    text-align: left;
+    height: 102px;
+    padding: 24px 0 24px 24px;
+    float: left;
+}
+.cart-merchant-list .mz-checkbox{
+    position: absolute;
+    top:50%;
+    margin-top:-9px;
+}
+.cart-col-select .cart-product-link {
+    display: inline-block;
+    vertical-align: middle;
+    color: #262626;
+    margin-left: 37px;
+}
+.cart-col-select .cart-product-img {
+    width: 100px;
+    height: 100px;
+
+}
+.cart-product-link p {
+    font-size: 14px;
+    width: 100%;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cart-product-link .cart-product-desc{
+    color: #8C8C8C;
+    margin-top: 4px;
+}
+.cart-col-price2{
+    width: 200px;
+    height: 150px;
+    line-height: 150px;
+   float: left;
+}
+.cart-col-price2 p{
+    width: 200px;
+    height: 20px;
+    line-height: 140px;
+    margin-left: 30px;
+   
+}
+.oc-input-number {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #dce1e4;
+    width: 87px;
+    height: 26px;
+    overflow: hidden;
+    margin-left:30px ;
+}
+.input-number-input{
+    width: 87px;
+    height: 26px;
+    line-height: 26px; 
+}
+.oc-input-number .input-number-input input {
+    text-align: center;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 11px 23px;
+}
+
+.oc-input-number .input-jian {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    text-align: center;
+    overflow: hidden;
+    background: url("../img/jian.png") no-repeat center center;
+    background-size: 12px 12px;
+    width: 24px;
+    height: 24px;
+ 
+    border-right: 1px solid #EFEFEF;
+}
+
+.oc-input-number .input-jia {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    width: 24px;
+    height: 24px;
+    background: url("../img/jia.png") no-repeat center center;
+    background-size: 12px 12px;
+    border-left: 1px solid #EFEFEF;
+}
+.cart-col-price3{
+    width: 140px;
+    height: 150px;
+    line-height: 150px;
+   float: left;
+}
+.cart-col-price3 p{
+    width: 200px;
+    height: 20px;
+    line-height: 140px;
+    color: #E02B41;
+   
+}
+.cart-col-price4{
+    width: 120px;
+    height: 150px;
+    line-height: 150px;
+   float: left;
+}
+.cart-product-remove {
+    border-radius: 100%;
+    background-color: transparent;
+    transition: all .7s;
+    text-align: center;
+    line-height: 140px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+}
+.cart-footer {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    font-size: 14px;
+    color: #666;
+    line-height: 67px;
+    transition: background-color 1s;
+}
+.cart-footer .mzcontainer {
+    background-color: #fff;
+    height: 100%;
+    width: 1240px;
+    margin: 0 auto;
+}
+.cart-footer .cart-footer-left {
+    float: left;
+    margin-left: 24px;
+    height: 100%;
+}
+.cart .cart-select-all {
+    display: inline-block;
+    vertical-align: middle;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 0;
+    user-select: none;
+}
+.cart-footer .cart-remove-selected {
+    margin: 0 24px 0 12px;
+    cursor: pointer;
+    color: #8C8C8C;
+    vertical-align: middle;
+}
+.cart-footer .cart-footer-count{
+    color: #8C8C8C;
+    vertical-align: middle;
+}
+.cart-footer .cart-footer-count .cart-footer-num{
+    color: red;;
+}
+.cart-footer .cart-footer-right {
+    float: right;
+    height: 100%;
+    margin-right: 30px;
+}
+.cart-footer .cart-footer-sum {
+    color: #595959;
+    vertical-align: middle;
+}
+.cart-footer .cart-footer-num.red {
+    color: #E02B41;
+}
+.cart-footer .cart-footer-total {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #E02B41;
+    margin-right: 24px;
+    vertical-align: middle;
+}
+.cart-footer .to-order-btn {
+    color: #FFF;
+    border: none!important;
+    background-color: #F66567!important;
+    border-radius: 2px;
+    outline: 0;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 58px;
+    min-height: 34px;
+    line-height: 34px;
+    transition: .5s all;
+    padding: 0 20px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 底部 */
+
+.meizu-footer {
+    margin: 0;
+    padding: 0;
+    z-index: 999;
+    font-size: 14px;
+    color: #515151;
+    position: relative;
+    background-color: #fff;
+}
+.meizu-footer .meizu-footer-link {
+    padding: 48px 0 20px;
+    border-top: 1px solid #f1f1f1;
+}
+.meizu-footer-wrap {
+    max-width: 1240px;
+    height: 177px;
+    margin: 0 auto;
+}
+.meizu-footer-top{
+    max-width: 1240px;
+    height: 84px;
+    position: relative;
+}
+.meizu-footer-service{
+    width: 1000px;
+    float: left;
+}
+.meizu-footer-service li {
+    float: left;
+    text-align: center;
+    width: 15%;
+}
+.meizu-footer-service li a {
+    display: block;
+    overflow: hidden;
+    line-height: 27px;
+    font-size: 12px;
+    color: #666;
+}
+.meizu-footer-service li img {
+    width: 50px;
+    display: block;
+    margin: 0 auto;
+}
+.meizu-footer-service li span {
+    line-height: 30px;
+    color: #999;
+}
+.meizu-footer .onlive-server {
+    float: right;
+    text-align: right;
+    margin-top: -18px;
+}
+.onlive-server span {
+    color: #999;
+    font-size: 12px;
+    line-height: 30px;
+}
+#meizu-footer .onlive-server .tel {
+    color: #00c3f5;
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: -6px;
+    line-height: 40px;
+}
+.onlive-server .onlive-btn {
+    height: 30px;
+    padding: 0 16px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 20px;
+    margin-top: 3px;
+    display: inline-block;
+    font-size: 14px;
+    background: #0bbbef;
+}
+.footer-hr {
+    margin: 10px auto 28px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 0;
+}
+.meizu-row {
+    max-width: 1240px;
+    position: relative;
+}
+.meizu-row-info {
+    color: #999;
+    text-align: left;
+    font-size: 12px;
+    float: left;
+    width: 100%;
+}
+.meizu-row-info ul{
+    height: 18px;
+}
+
+.meizu-row-info ul li {
+    padding-right: 15px;
+    border-right: 1px solid #d6d6d6;
+    float: left;
+    height: 18px;
+    margin-right: 15px;
+}
+.meizu-row-info ul li:nth-last-child(1){
+    border: none;
+}
+.meizu-row-info ul a {
+    display: block;
+    color: #999;
+    line-height: 18px;
+}
+.meizu-row-info ul a:hover{
+    color: #0bbbef;
+}
+.meizu-footer-certificate {
+    padding-top: 8px;
+    height: 35px;
+}
+.meizu-footer-certificate a{
+    color: #999;
+}
+.meizu-footer-certificate a:hover{
+    color: #0bbbef;
+}
+.foot-sub{
+    float: right;
+    position: relative;
+}
+.foot-sub a {
+    width: 40px;
+    height: 30px;
+}
+.foot-sub a img {
+    position: absolute;
+    bottom: 40px;
+    width: 180px;
+    left: -9px;
+    display: none;
+}
+.foot-sub .foot-sub-img1{
+    background: url("../img/foot/d1.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img2{
+    background: url("../img/foot/d2.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img3{
+    background: url("../img/foot/d3.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img4{
+    background: url("../img/foot/d4.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 4px;
+    margin-right: 20px;  
+}

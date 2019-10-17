@@ -1,0 +1,725 @@
+.meizu-header-con{
+    width: 1240px;
+    height: 100%;
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+}
+.meizu-header{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    height: 82px;
+    overflow: hidden;
+}
+.meizu-header-logo {
+    float: left;
+    padding: 28px 0;
+}
+.meizu-header-logo-size{
+    display: block;
+    width: 125px;
+    height: 24px;
+    font-size:24px; 
+    margin-top: -4px;
+    font-weight: bold;
+    letter-spacing: 8px;
+    color: #00beff;
+}
+
+.meizu-cart{
+    position: relative;
+    right: 6px;
+    float: right;
+    margin: 27px 0 0 8px;
+    width: 29px;
+    height: 29px;
+    text-align: center;
+    font-size: 12px;
+    text-indent: 3px;
+    line-height: 10px;
+    background-position-y: center
+}
+.meizu-cart .iconfont{
+    color: #6C6C6C;
+    font-size: 30px;
+    position: relative;
+    top: 8px;
+    right: 6px;
+    z-index: 0;
+}
+.hua {
+    position: absolute;
+    top: -6px;
+    display: inline-block;
+    padding: 1px 3px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #fff;
+    background-color: #e1251b;
+    border-radius: 7px;
+    min-width: 12px;
+    text-align: center;
+}
+
+.meizu-header-user{
+    float: right;
+    padding: 26px 8px 0 12px;
+    text-align: right;
+    font-size: 12px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1050;
+}
+.meizu-header-user-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    width: 98px;
+    background-color: #fff;
+    top: 64px;
+    left: 50%;
+    border-radius: 2px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 15px 0;
+    margin-left: -48px;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+}
+.meizu-header-user li {
+    font-size: 12px;
+    display: block;
+    margin: 15px auto;
+}
+.meizu-header-user li a:hover{
+    color: #00beff;
+}
+.meizu-header-user li a {
+    position: relative;
+    z-index: 4;
+    color: #515151;
+}
+.meizu-header-user .iconfont{
+    color: #6C6C6C;
+    font-size: 24px;
+    position: relative;
+    z-index: 0;
+}
+.meizu-header-input{
+    position: relative;
+    float: right;
+    margin: 26px 5px 0 10px;
+    width: 170px;
+    height: 30px;
+    line-height: 29px;
+    font-size: 12px;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+}
+.meizu-header-input input{
+    display: block;
+    border: none;
+    padding: 0;
+    outline: 0;
+    width: 127px;
+    height: 20px;
+    margin-left: 15px;
+    margin-top: 5px;
+    transition: width .5s;
+    font-size: 12px;
+    line-height: 20px;
+    color: #333;
+    background: transparent;
+    box-sizing: content-box;
+    outline-offset: 0;
+}
+.meizu-header-input a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width: 36px;
+    height: 32px;
+    background-position: 50%;
+    cursor: pointer;
+}
+.meizu-header-input .iconfont{
+    color: #6C6C6C;
+    font-size: 18px;
+    left: 2px;
+    position: relative;
+    z-index: 0;
+}
+.meizu-header-list{
+    float: right;
+}
+.meizu-header-list li{
+    float: left;
+}
+.meizu-header-list a {
+    color: #6C6C6c;
+    display: block;
+    padding: 31px 20px 30px;
+    line-height: 21px;
+    font-size: 14px;
+    transition: color .1s linear;
+}
+.meizu-header-list a:hover{
+    color: #00beff;
+}
+.meizu-header-shop{
+    display: flex;
+    width: 1140px;    
+    height: auto;   
+    padding:0 50px;
+    justify-content:space-around;
+    align-items: flex-start;
+    
+}
+.meizu-header-shop_sj{
+    width: 80px;
+    height: 100px;
+    margin-top:20px; 
+    opacity: 0.4;
+    cursor: pointer;
+}
+.meizu-header-shop_sj:hover{
+    opacity: 1; 
+}
+.meizu-header-shop img{
+    display: block;
+    width: 80px;
+    height: 100px;
+    margin-left: 10px;  
+}
+.meizu-header-shop p,.meizu-header-shop span{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap; 
+    display: block;
+    width: 120px;
+    font-size: 12px;
+    height: 12px;
+    margin-top:5px;  
+    text-align: center;
+    line-height: 12px;
+   
+}
+/* banner图 */
+.mz-banner {
+    position: relative;
+    height: 670px;
+    margin: auto;
+}
+.mz-banner-con{
+    width: 1519px;
+    height: 670px;
+    margin: 0 auto;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+.mz-container-banner{
+    position: relative;
+    height: 670px;
+    width: 100%;
+    overflow: hidden;
+}
+.wrapper-banner{
+    width: 13680px;
+    height: 670px;
+    position: absolute;
+}
+.slider-1{
+    width: 1520px;
+    height: 670px;
+    cursor: pointer;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    box-sizing: content-box;
+}
+.slider-1 img{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.pagination {
+    width: 500px;
+    padding: 0 10px;
+    height: 25px;
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    margin-left: -250px;
+    bottom: 20px;
+    text-align: center;
+}
+.swiper-pagination-switch {
+    display: inline-block;
+    zoom: 1;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    margin: 5px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+/* 内容块 */
+.index-container {
+    background: #f4f4f4;
+    min-width: 1240px;
+    overflow: hidden;
+}
+.section-box{
+    margin-bottom: 50px;
+}
+.section-box-adv {
+    height: auto;
+    padding-bottom: 45px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+}
+.section-box-con{
+    max-width: 1240px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.section-box-adv li {
+    float: left;
+    position: relative;
+    width: 25%;
+    padding-top: 45px;
+}
+.section-box-adv li:hover{
+    opacity: 0.8;
+}
+.section-box .box-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transition: opacity .2s linear;
+    color: #515151;
+}
+.section-box-adv img {
+    height: 130px;
+    text-align: center;
+    margin: 0 auto;
+}
+.section-box-adv em {
+    display: block;
+    color: #333;
+    font-size: 20px;
+}
+.section-box-adv p {
+    font-size: 14px;
+    color: #999;
+    max-height: 100%;
+}
+
+
+/* 手机 */
+.section-phone{
+    margin-bottom: 50px;
+}
+.section-title {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.section-title h3{
+    font-size: 30px;
+    font-weight: 400;
+}
+.section-phone-adv {
+    height: 450px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+}
+.section-phone-adv a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+.section-phone-adv a img {
+    position: absolute;
+    width: auto;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.section-phone-adv:hover{
+    opacity: 0.8;
+}
+.section-phone-row{
+    width: 100%;
+    height: 1390px;
+}
+.section-phone-wrapper{
+    margin:  0 auto;
+    width: 1260px;
+    height: 100%;
+    /* background: #ccc; */
+}
+.phone-agg{
+    height: 100%;
+}
+.section-phone-row li {
+    float: left;
+    position: relative;
+    margin-right: 9px;
+    margin-top: 10px;
+    background-color: #fff;
+    overflow: hidden;
+    width: 303px;
+    height: 375px;
+    transition: all .3s ease;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+.section-phone-row li:hover{
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+}
+.section-item-box {
+    height: 100%;
+}
+.section-phone-wrapper li a img{
+    width: 230px;
+    height: 230px;
+   position: absolute;
+   top: 30px;
+  left: 50%;
+  margin-left:-115px; 
+}
+.section-phone-row .phone1{
+    width: 615px;
+    height: 610px;
+}
+.section-phone-wrapper a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: relative;
+    color: #515151;
+}
+.section-phone-wrapper .phone1 a img{
+    position: absolute;
+    left: 50%;
+    top: 120px;
+    width: 460px;
+    height: 460px;
+    margin-left: -250px;
+    margin-top: 30px;
+}
+.section-phone-row  .phone2{
+    width: 615px;
+    height: 610px; 
+}
+.section-phone-wrapper .phone2 a img{
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    bottom: 0;
+    width: 460px;
+    height: 460px;
+    margin-left: -220px;
+    margin-top: 30px;
+}
+.section-phone-wrapper .phone1 .box-info {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 58px;
+    text-align: center;
+}
+.section-phone-wrapper .phone2 .box-info {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 58px;
+    text-align: center;
+}
+.box-info span {
+    display: block;
+}
+.section-phone-wrapper .phone1 .box-info .goods-name {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 0;
+}
+.section-phone-wrapper .phone2 .box-info .goods-name {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 0;
+}
+.section-phone-wrapper .phone1 .box-info .goods-desc {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+.section-phone-wrapper .phone2 .box-info .goods-desc {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+.box-info .goods-price {
+    position: relative;
+    display: inline-block;
+    color: #c00;
+    font-size: 22px;
+    padding-left: 14px;
+}
+.box-info .goods-price i {
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+    bottom: 3px;
+}
+.section-phone-wrapper .box-info{
+    position: absolute;
+    top: 270px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.section-phone-wrapper .box-info .goods-name{
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+.section-phone-wrapper .box-info .goods-desc{
+    color: #999;
+    font-size: 14px;
+}
+/* 声学 */
+.box-info .goods-price s {
+    font-size: 14px;
+    margin-left: 8px;
+    color: #666;
+}
+
+.section-phone-wrapper .earphone a img{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.section-phone-wrapper .earphone .box-info .goods-name{
+    color: #fff;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.section-phone-wrapper .earphone .box-info .goods-desc{
+    color: #fff;
+}
+.section-phone-wrapper .earphone .box-info .goods-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ebce6b;
+}
+
+/* 底部 */
+.meizu-footer {
+    margin: 0;
+    padding: 0;
+    z-index: 999;
+    font-size: 14px;
+    color: #515151;
+    position: relative;
+    background-color: #fff;
+}
+.meizu-footer .meizu-footer-link {
+    padding: 48px 0 20px;
+    border-top: 1px solid #f1f1f1;
+}
+.meizu-footer-wrap {
+    max-width: 1240px;
+    height: 177px;
+    margin: 0 auto;
+}
+.meizu-footer-top{
+    max-width: 1240px;
+    height: 84px;
+    position: relative;
+}
+.meizu-footer-service{
+    width: 1000px;
+    float: left;
+}
+.meizu-footer-service li {
+    float: left;
+    text-align: center;
+    width: 15%;
+}
+.meizu-footer-service li a {
+    display: block;
+    overflow: hidden;
+    line-height: 27px;
+    font-size: 12px;
+    color: #666;
+}
+.meizu-footer-service li img {
+    width: 50px;
+    display: block;
+    margin: 0 auto;
+}
+.meizu-footer-service li span {
+    line-height: 30px;
+    color: #999;
+}
+.meizu-footer .onlive-server {
+    float: right;
+    text-align: right;
+    margin-top: -18px;
+}
+.onlive-server span {
+    color: #999;
+    font-size: 12px;
+    line-height: 30px;
+}
+#meizu-footer .onlive-server .tel {
+    color: #00c3f5;
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: -6px;
+    line-height: 40px;
+}
+.onlive-server .onlive-btn {
+    height: 30px;
+    padding: 0 16px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 20px;
+    margin-top: 3px;
+    display: inline-block;
+    font-size: 14px;
+    background: #0bbbef;
+}
+.footer-hr {
+    margin: 10px auto 28px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 0;
+}
+.meizu-row {
+    max-width: 1240px;
+    position: relative;
+}
+.meizu-row-info {
+    color: #999;
+    text-align: left;
+    font-size: 12px;
+    float: left;
+    width: 100%;
+}
+.meizu-row-info ul{
+    height: 18px;
+}
+
+.meizu-row-info ul li {
+    padding-right: 15px;
+    border-right: 1px solid #d6d6d6;
+    float: left;
+    height: 18px;
+    margin-right: 15px;
+}
+.meizu-row-info ul li:nth-last-child(1){
+    border: none;
+}
+.meizu-row-info ul a {
+    display: block;
+    color: #999;
+    line-height: 18px;
+}
+.meizu-row-info ul a:hover{
+    color: #0bbbef;
+}
+.meizu-footer-certificate {
+    padding-top: 8px;
+    height: 35px;
+}
+.meizu-footer-certificate a{
+    color: #999;
+}
+.meizu-footer-certificate a:hover{
+    color: #0bbbef;
+}
+.foot-sub{
+    float: right;
+    position: relative;
+}
+.foot-sub a {
+    width: 40px;
+    height: 30px;
+}
+.foot-sub a img {
+    position: absolute;
+    bottom: 40px;
+    width: 180px;
+    left: -9px;
+    display: none;
+}
+.foot-sub .foot-sub-img1{
+    background: url("../img/foot/d1.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img2{
+    background: url("../img/foot/d2.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img3{
+    background: url("../img/foot/d3.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub .foot-sub-img4{
+    background: url("../img/foot/d4.png");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+}
+.foot-sub i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 4px;
+    margin-right: 20px;  
+}
+
+

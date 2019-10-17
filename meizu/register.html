@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>『Flyme 账号』-注册</title>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body #app,
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-size: 14px;
+            background-color: #fff;
+            font-family: "sans-serif", Microsoft YaHei, Source Han Sans CN, Arial;
+        }
+
+        .index {
+            height: 100%;
+            /* background-image: url(css/bj.png); */
+        }
+
+        .header {
+            background: transparent;
+            position: relative;
+            font-family: FZYOUH_508R--GB1-4;
+            display: block;
+            width: 100%;
+            height: 78px;
+            line-height: 78px;
+            /* background: #fff; */
+            padding: 0 65px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .header .header_wrap {
+            width: 894px;
+            margin: 0 auto;
+            height: 100%;
+        }
+
+        .header .header_link {
+            float: left;
+        }
+
+        .header a {
+            font-family: MyriadPro-Regular;
+            height: 78px;
+            line-height: 78px;
+            font-size: 14px;
+            color: #7f7f7f;
+            margin-right: 27px;
+        }
+
+        .header .header_language {
+            text-align: center;
+            float: right;
+            width: 90px;
+            height: 20px;
+            position: relative;
+            color: #7f7f7f;
+            font-size: 14px;
+        }
+
+        .header .header_wrap .changeBox {
+            width: 110px;
+            text-align: center;
+            background: #fff;
+            border-radius: 5px;
+            position: absolute;
+            z-index: 20;
+            top: 60px;
+            right: 0;
+            overflow: hidden;
+            display: none;
+            box-shadow: 0 0 5px #d3d3d3;
+        }
+
+        .header .header_language .ic_down {
+            height: 0;
+            width: 0;
+            display: inline-block;
+            border: 5px solid transparent;
+            border-top-color: #7f7f7f;
+            margin-left: 10px;
+            margin-bottom: -1px;
+        }
+
+        .header .header_wrap .changeBox div {
+            padding: 5px 20px;
+            cursor: pointer;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .header .header_wrap .changeBox div:hover {
+            background: #F7F8FB;
+        }
+
+        .box_boxLarge {
+            height: auto;
+            position: relative;
+            width: 960px;
+            margin: 0 auto;
+
+            border: none;
+            border-radius: 0;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .boxLarge {
+            height: 100px;
+        }
+
+        ._logo {
+            width: 960px;
+            height: 25px;
+            margin: 25px auto 25px;
+            height: 25px;
+            font-size: 30px;
+            text-align: center;
+            color: #343434;
+        }
+        .box_boxLarge .aaa{
+            width: 894px;
+            margin: 0 auto;
+              margin: 40px auto 11px;
+        }
+        .box_boxLarge a {
+            display: block;
+            width: 60px;
+            margin-left: 40px ;
+            font-size: 14px;
+            color: #2ad181;
+          
+            text-decoration: underline;
+        }
+
+        .register_box {
+            width: 958px;
+            margin: 0 auto;
+            min-height: 300px;
+
+        }
+
+        .box_con {
+            width: 400px;
+            height: 462px;
+            background: #fff;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .register_con {
+            font-size: 25px;
+            line-height: 36px;
+            margin-bottom: 52px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .register_input {
+            width: 400px;
+            height: 48px;
+            border-radius: 9px;
+            background: #f7f7f7;
+            position: relative;
+
+        }
+
+        .reg_left {
+            width: 90px;
+            height: 48px;
+            text-align: center;
+            line-height: 48px;
+            font-size: 14px;
+            position: relative;
+            float: left;
+        }
+
+        .reg_left i {
+            position: absolute;
+            right: 0;
+            top: 18px;
+            height: 12px;
+            width: 2px;
+            background: #d8d8d8;
+        }
+
+        .reg_zhong {
+            display: block;
+            width: 310px;
+            height: 48px;
+            text-indent: 16px;
+            background: #f7f7f7;
+            border-radius: 9px;
+            font-size: 14px;
+            line-height: 48px;
+            float: left;
+        }
+
+        .zoneInput_down {
+            display: block;
+            width: 16px;
+            height: 16px;
+        }
+
+        .zoneInput_down img {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+        }
+
+        .region_tip {
+            display: block;
+            width: 400px;
+            height: 16px;
+            line-height: 16px;
+            margin: 10px auto 18px;
+            opacity: .3;
+            font-family: "sans-serif";
+            font-size: 12px;
+            color: #000;
+            padding: 0;
+        }
+
+        .phone {
+            width: 400px;
+            height: 48px;
+            margin: 9px auto;
+            border-radius: 9px;
+            background: #f7f7f7;
+        }
+
+        .phone input {
+            display: block;
+            width: 100%;
+            height: 48px;
+            line-height: 1x;
+            margin: 0 auto;
+            background: #f7f7f7;
+            border-radius: 9px;
+            box-sizing: border-box;
+            text-indent: 16px;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .codeWrap input {
+            display: block;
+            width: 266px;
+            height: 48px;
+            background: #f7f7f7;
+            border-radius: 9px;
+            box-sizing: border-box;
+            text-indent: 16px;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .register .box_content .fromtable .codeWrap .input_code.disabled {
+            opacity: .15;
+            background: #000;
+            border-color: #000;
+        }
+
+        .codeWrap {
+            position: relative;
+        }
+
+        .input_code {
+            width: 112px;
+            min-width: 112px;
+        }
+
+        .codeWrap .input_code {
+            position: absolute;
+            height: 48px;
+            line-height: 48px;
+            min-width: 120px;
+            padding: 0 8px;
+            box-sizing: border-box;
+            top: 0;
+            right: 0;
+            border: 1px solid #D9D9D9;
+            /* background-color: #2ad181; */
+            background: #D9D9D9;
+            border-radius: 9px;
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .input_password {
+            width: 400px;
+            height: 48px;
+            position: relative;
+            margin: 9px auto;
+            margin-top: 20px;
+        }
+
+        .input_password i img {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            top: 13px;
+            right: 13px;
+        }
+
+        .input_password input {
+            display: block;
+            width: 400px;
+            height: 48px;
+            background: #f7f7f7;
+            border-radius: 9px;
+            box-sizing: border-box;
+            text-indent: 16px;
+            font-size: 14px;
+            color: #000;
+            position: relative;
+        }
+
+        .region_tip {
+            margin: 10px auto 18px;
+            opacity: .3;
+            font-family: "sans-serif";
+            font-size: 12px;
+            color: #000;
+        }
+
+        .registerTips {
+            color: #ec5b66;
+            font-size: 12px;
+            margin-top: 6px;
+            text-align: center;
+            position: relative;
+            top: 20px;
+        }
+
+        .primary_btn {
+            margin-top: 37px;
+        }
+
+        button {
+            position: relative;
+            display: block;
+            width: 100px;
+            line-height: 39px;
+            height: 39px;
+            font-size: 12px;
+            margin: 9px auto;
+            text-align: center;
+            background-color: transparent;
+            opacity: .3;
+            border: none;
+            outline: none;
+            border-radius: 9px;
+            font-size: 15px;
+            color: #fff;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: .1s;
+            background-color: #2ad181;
+        }
+
+        .footer {
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 57px;
+        }
+
+        .footer p {
+            font-family: MyriadPro-Regular;
+            font-size: 12px;
+            color: #9b9b9b;
+            text-align: center;
+        }
+
+        .footer p span {
+            margin-left: 5px;
+        }
+    </style>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/Ajax.js"></script>
+    <script>
+        function events() {
+            let xiala = $(".header_language");
+            let list = $(".changeBox");
+            xiala.click(function () {
+                list.css({
+                    display: "block"
+                })
+            });
+            $(document).bind('click', function (e) {
+                var e = e || window.event; //浏览器兼容性 
+                var elem = e.target || e.srcElement;
+                while (elem) { //循环判断至跟节点，防止点击的是div子元素 
+                    if (elem.id && elem.id == 'test') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                list.css('display', 'none'); //点击的不是div或其子元素 
+            });
+        }
+        function login(t, p) {
+            let _login = $(".primary_btn");
+            let input_1 = $(".phone input");
+            let input_2 = $(".input_password input");
+            let tishi = $(".registerTips");
+            let xian = document.getElementById("xian");
+            let huoqu = document.getElementById("huoqu");
+            xian.onclick = function () {
+                if (input_2[0].type == "password") {
+                    input_2[0].type = "text";
+                    xian.src = "img/yin.png";
+                } else {
+                    input_2[0].type = "password";
+                    xian.src = "img/xian.png";
+                }
+            }
+            input_1.on(" input propertychange", function () {
+                tishi.text("");
+                if (input_1.val().length >= 6) {
+                    huoqu.style.background = "#2ad181";
+                }
+                if (input_1.val() == "") {
+                    huoqu.style.background = "#D9D9D9";
+                }
+                huoqu.onclick = function () {
+                    var a = Math.floor(Math.random() * 9999);
+                    alert(a);
+                }
+            });
+            input_2.change( function () {
+                let t = input_1.val();
+                let p = input_2.val();
+                // (?![0-9]+$)(?![a-zA-Z]+$)
+                let reg = /^[0-9A-Za-z]{6,16}$/g;
+                let reg2 = /^[0-9A-Za-z]{6,16}$/g;
+                _login.css({
+                    "opacity": 1
+                });
+                _login.click(function () {
+                    if (reg.test(t)) {
+                        if (reg2.test(p)) {
+                            reader(t, p);
+                        }
+                        else {
+                            tishi.text("密码格式错误，请重新输入");
+                            return 
+                        }
+                    } else {
+                        tishi.text("账号格式错误，请重新输入");
+                    }
+                })
+            });
+        }
+        function reader(t, p) {
+            let _ajax = new Ajax();
+            console.log(t)
+            console.log(p)
+            _ajax.request({
+                method: "GET",
+                url: "js/insert.php",
+                data: {
+                    id: t,
+                    pwd: p
+                },
+                success: function (_data) {
+                    _data = window.eval("(" + _data + ")");
+                    if (_data.code == 2000) {
+                        window.location.href = 'login.html';
+                    } else {
+                        // alert("账号或密码错误")
+                    }
+                }
+            });
+        }
+        window.onload = function () {
+            events();
+            login();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="index">
+            <div class="header">
+                <div class="header_wrap">
+                    <div class="header_link"><a href="#">魅族官网</a><a
+                            href="#">Flyme</a><a href="#">云服务</a></div>
+                    <div class="header_language" id="test">简体中文<span class="ic_down"></span>
+                        <div class="changeBox">
+                            <div>简体中文</div>
+                            <div>繁體中文</div>
+                            <div>English</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="box_boxLarge">
+                <div><a href="login.html">返回首页</a></div>
+                <div class="register_box">
+                    <div class="box_con">
+                        <div class="register_con">注册账号</div>
+                        <div class="register_input">
+                            <div class="reg_left">国家/地区<i></i></div>
+                            <input class="reg_zhong" type="text" value="中国">
+                            <i class="zoneInput_down"><img src="img/xiala.png" alt=""></i>
+                        </div>
+                        <p class="region_tip">成功注册帐号后，国家/地区将不可更改</p>
+                        <div class="phone">
+                            <input type="text" autocomplete="off" placeholder="请输入手机号码或邮箱" value="">
+                        </div>
+                        <div class="codeWrap">
+                            <input autocomplete="off" type="text" placeholder="请输入验证码" value="">
+                            <div class="input_code disabled" id="huoqu">获取验证码</div>
+                        </div>
+                        <div class="input_password">
+                            <input autocomplete="off" type="password" placeholder="请输入密码" value="">
+                            <i><img id="xian" src="img/xian.png" alt=""></i>
+                        </div>
+                        <p class="region_tip">密码由6-16位数字、字母或符号组成、至少包含两种字符</p>
+                        <p class="registerTips"></p>
+                        <button class="primary_btn">注册</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p><span>© 2005 - 2019 OPPO 版权所有 粤ICP备14056724号-2</span><span>联系方式：4001-666-888</span></p>
+            </div>
+        </div>
+</body>
+
+</html>

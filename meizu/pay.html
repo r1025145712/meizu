@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>结账</title>
+    <link rel="icon" type="image/x-icon" href="img/panda.ico" />
+    <link rel="stylesheet" href="css/pay.css">
+    <link rel="stylesheet" href="css/base.css">
+    <script src="js/Ajax.js"></script>
+    <script src="js/Cart.js"></script>
+    <script>
+        function identifies(_cart) {
+            let _identifies = '';
+            for (let i = 0; i < _cart.storage.length; i++) {
+                _identifies += _cart.storage[i].id + ",";
+            }
+            return /,$/g.test(_identifies) && _identifies.replace(/,$/g, "");
+            console.log(_identifies);
+        }
+        function read(_identifies, _cart) {
+            let _ajax = new Ajax();
+            _ajax.request({
+                url: "js/dispatch.php",
+                data: {
+                    identifies: _identifies,
+                },
+                success: function (_data) {
+                    _data = window.eval("(" + _data + ")");
+                    // _data=JSON.parse(text[, reviver])
+                    render(_data.list, _cart);
+                }
+            })
+        }
+        function render(_list, _cart) {
+            let item = '';
+            for (let n = 0; n < _cart.storage.length; n++) {
+                for (let i = 0; i < _list.length; i++) {
+                    if (_cart.storage[n].id == _list[i].ID) {
+                        item +=
+                            '<div class="cart-merchant-list" id="block" identify="' + _list[i].ID + '">' +
+                            '<div class="cart-col-select" >' +
+                            '<input type="checkbox"  class="mz-checkbox" />' +
+                            '<a href="cart.html?id=' + _list[i].ID + '" class="cart-product-link">' +
+                            '<img src="img/cart/' + _list[i].image + '" alt="" class="cart-product-img">' +
+                            '</a>' +
+                            '<a href="cart.html?id=' + _list[i].ID + '" class="cart-product-link">' +
+                            '<p class="cart-product-item-name">' + _list[i].name + '</p>' +
+                            '<p class="cart-product-desc">' + decodeURIComponent(_cart.storage[n].comment) + '</p>' +
+                            '</a>' +
+                            '</div>' +
+                            '<div class="cart-col-price2">' +
+                            '<p>' +
+                            '<span>￥</span>' +
+                            '<span class="cart-product-price" id="price">' + _list[i].money1 + '</span>' +
+                            '</p>' +
+                            '</div>' +
+                            '<div class="cart-col-price2">' +
+                            '<div class="oc-input-number">' +
+                            '<div class="input-number-input">' +
+                            '<input class="input_he" type="text"  placeholder="0" value="' + _cart.storage[n].counter + '">' +
+                            '</div>' +
+                            '<i class="input-jia"></i>' +
+                            '<i class="input-jian"></i>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="cart-col-price3">' +
+                            '<p>' +
+                            '<span>￥</span>' +
+                            '<span class="cart-product-price" id="num">' + (_list[i].money1 * _cart.storage[n].counter).toFixed(2) + '</span>' +
+                            '</p>' +
+                            '</div>' +
+                            '<div class="cart-col-price4">' +
+                            '<div class="cart-product-remove" data-mdesc="删除单个商品按钮" data-mtype="click_store_cart_del">x</div>' +
+                            '</div>' +
+                            '</div>';
+                    }
+                }
+            }
+            document.getElementById("fushu").innerHTML = item;
+            // events(_cart, _list);
+            cartEvent(_cart, _list)
+        }
+        function cartEvent(_cart, _list) {
+            /*********全选和反选的实现*********/
+            // 1 给全选绑定事件
+            all('#master')[0].onclick = function () {
+                // console.log(this);
+                // 2 获取全选当前的状态
+                var sta = this.checked;
+                // 3 调用单个商品选中的方法
+                goodsCheckAll(sta, 1)
+            }
+            // 1 给全选绑定事件
+            all('#master')[1].onclick = function () {
+                // console.log(this);
+                // 2 获取全选当前的状态
+                var sta = this.checked;
+                // 3 调用单个商品选中的方法
+                goodsCheckAll(sta, 0)
+            }
+            function goodsCheckAll(status, k) {
+                // 1 获取页面中所有商品复选框
+                var goodsOneObj = all('.mz-checkbox');
+                // 2 循环复选框,设置状态
+                for (var i = 0; i < goodsOneObj.length; i++) {
+                    goodsOneObj[i].checked = status;
+                }
+                // 3 设置另一个的全选的状态
+                all('#master')[k].checked = status;
+                // 调用统计统计数量和价钱的函数
+                pcNum();
+            }
+            /********一件商品的选中与否********/
+            //给所有商品增加点击事件
+            function _click() {
+                // 1 获取页面中所有商品复选框
+                var goodsOneObj = all('.mz-checkbox');
+                let zr = document.querySelector(".cart-remove-selected");
+                // 2 循环复选框,设置状态
+                for (var i = 0; i < goodsOneObj.length; i++) {
+                    goodsOneObj[i].onclick = function () {
+                        goodsCheck(this);
+                    }
+                }
+                var add = all(".input-jia");
+                for (let i = 0; i < add.length; i++) {
+                    add[i].onclick = function () {
+                        addGoodsNum(this, i)
+                    }
+                }
+                var remove = all(".input-jian");
+                for (let i = 0; i < remove.length; i++) {
+                    remove[i].onclick = function () {
+                        reduceGoodsNum(this, i)
+                    }
+                }
+                var move = all(".cart-product-remove");
+                for (let i = 0; i < move.length; i++) {
+                    move[i].onclick = function () {
+                        removeGoodsNum(this, i)
+                    }
+                }
+                var input = all(".input_he");
+                for (let i = 0; i < input.length; i++) {
+                    input[i].onchange = function () {
+                        setinput(this, i)
+                    }
+                }
+                zr.onclick = function () {
+                    deleteAll();
+                }
+            }
+            _click();
+            function goodsCheck(checkObj) {
+                // 1 获取当前checked的状态
+                console.log(checkObj.checked)
+                var status = checkObj.checked;
+                // 2 如果为false,取消全选
+                if (!status) {
+                    all('#master')[0].checked = false;
+                    all('#master')[1].checked = false;
+                }
+
+                // 3 获取所有的check-one
+                var checkOnesObj = all('.mz-checkbox');
+                var len = checkOnesObj.length;
+                // 4 设置一个统计选中的状态数
+                var countCheck = 0;
+                // 5 循环统计选中的次数
+                for (var i = 0; i < len; i++) {
+                    if (checkOnesObj[i].checked) countCheck++;
+                }
+                // 6 如果次数等于check-one节点的长度就全选,选中
+                if (countCheck == len) {
+                    all('#master')[0].checked = true;
+                    all('#master')[1].checked = true;
+                }
+                pcNum();
+            }
+            /********统计选中商品的数量和价钱********/
+            function pcNum() {
+                //1 获取页面中check-one
+                var oneObj = all('.mz-checkbox');
+
+                //2 选中check-one,找到选中的
+                var sum = 0;
+                var totalPrice = 0;
+                let zsum = 0;
+                var he = document.querySelectorAll(".input_he");
+                for (var i = 0; i < oneObj.length; i++) {
+                    // 3 获取选中的商品,对应的数量和价格
+                    if (oneObj[i].checked) {
+                        // 获取 数量 价格
+                        var trObj = oneObj[i].parentNode.parentNode.parentNode;
+                        var numObj = trObj.querySelector('.input_he');
+                        var priceObj = trObj.querySelector('.cart-product-price');
+                        var num = numObj.value - 0;
+                        var price = priceObj.innerHTML;
+                        // 4 统计价钱,和数量
+                        totalPrice += num * price;
+                        sum += num;
+                    }
+                    zsum += he[i].value - 0;
+                }
+                // 5显示到页面中
+                // console.log(sum,totalPrice)
+                //共多少件商品
+                document.querySelector("#totalCount").innerHTML = zsum;
+                document.querySelector('#totalSelectedCount').innerHTML = sum;
+                document.querySelector('#totalPrice').innerHTML = totalPrice.toFixed(2);
+            }
+            /*****************共多少件商品***********/
+            document.querySelector("#totalCount").innerHTML = _cart.statistics();
+            /********商品数量的增加********/
+            function addGoodsNum(addObj, i) {
+                // 1 获取商品的数量
+                // console.log(addObj);
+                var goodsNumObj = document.querySelectorAll(".input_he")[i];
+                let _identify = addObj.parentNode.parentNode.parentNode.getAttribute("identify");
+                let _comment = addObj.parentNode.parentNode.parentNode.children[0].children[2].children[1].innerHTML;
+                let resObj=addObj.parentNode.children[2]
+                _cart.push(Number(_identify), 1, _comment);
+                var goodsNum = goodsNumObj.value - 0;
+                // console.log(goodsNum)
+                if (goodsNum == 1) {
+                    resObj.style.cursor = "pointer";
+                }
+                // 2 商品数量+1
+                goodsNum++;
+                // 3 获取单价,得出小计
+                var priceObj = document.querySelectorAll("#price")[i];
+                var price = priceObj.innerHTML
+                var total = (goodsNum * price).toFixed(2);
+                // 4 显示到页面中
+                // console.log(goodsNumObj)
+                goodsNumObj.value = goodsNum;
+                document.querySelectorAll("#num")[i].innerHTML = total;
+                pcNum()
+            }
+            function reduceGoodsNum(resObj, i) {
+                var goodsNumObj = document.querySelectorAll(".input_he")[i];
+                var goodsNum = goodsNumObj.value - 0;
+                let _identify = resObj.parentNode.parentNode.parentNode.getAttribute("identify");
+                let _comment = resObj.parentNode.parentNode.parentNode.children[0].children[2].children[1].innerHTML;
+                _cart.subtract(Number(_identify), 1, _comment);
+                // 判断当前商品数量是否为1
+                if (goodsNum == 1) {
+                    resObj.style.cursor = "not-allowed";
+                    return;
+                }
+                // 获取单价
+                var priceObj = document.querySelectorAll("#price")[i];
+                var price = priceObj.innerHTML;
+                //减少商品数量
+                goodsNum--;
+                // 得出小计
+                var total = (price * goodsNum).toFixed(2);
+
+                // 显示到页面中
+                goodsNumObj.value = goodsNum;
+
+                document.querySelectorAll("#num")[i].innerHTML = total;
+
+                pcNum();
+            }
+            function removeGoodsNum(removesObj, i) {
+                var goodsNumObj = removesObj.parentNode.parentNode;
+                var goodsfu = removesObj.parentNode.parentNode.parentNode;
+                goodsfu.removeChild(goodsNumObj);
+                let _identify = removesObj.parentNode.parentNode.getAttribute("identify");
+                let _comment = removesObj.parentNode.parentNode.children[0].children[2].children[1].innerHTML;
+                _cart.remove(Number(_identify), _comment);
+                pcNum();
+            }
+            function deleteAll(sede) {
+                let block = document.querySelector("#fushu");
+                let zblock = document.querySelectorAll("#block");
+                let _se = document.querySelectorAll(".mz-checkbox")
+                for (let i = 0; i < _se.length; i++) {
+                    if (_se[i].checked == true) {
+                        console.log(_se[i]);
+                        let _identify = _se[i].parentNode.parentNode.getAttribute("identify");
+                        let _comment = _se[i].parentNode.children[2].children[1].innerHTML;
+                        _cart.remove(Number(_identify), _comment);
+                        block.removeChild(zblock[i])
+                    }
+                }
+
+                // console.log(zblock)
+                // for (let i = 0; i < zblock.length; i++) {
+                //     block.removeChild(zblock[i])
+                // }
+                // _cart.clear();
+                // let 
+                pcNum();
+            }
+            function setinput(set, i) {
+                let _identify = set.parentNode.parentNode.parentNode.parentNode.getAttribute("identify");
+                let _comment = set.parentNode.parentNode.parentNode.parentNode.children[0].children[2].children[1].innerHTML;
+                let _counter = set.value;
+                let num=document.querySelectorAll("#num")[i];
+                let price=document.querySelectorAll("#price")[i].innerText;
+                console.log(_counter,price);
+                num.innerHTML=(_counter*price).toFixed(2);
+                _counter = Number(_counter);
+                _cart.one(Number(_identify), _counter, _comment);
+                pcNum();
+            }
+
+            // function dataStorage(counter){
+            //     let _cart = new Cart();
+            // }
+        }
+        function all(obj) {
+            return document.querySelectorAll(obj);
+        }
+        function main() {
+            let _cart = new Cart();
+            _cart.one();
+            _cart.remove();
+            let _identifies = identifies(_cart);
+            read(_identifies, _cart);
+        }
+        window.onload = main;
+    </script>
+</head>
+
+<body>
+    <section class="meizu-header" id="meizu-header">
+        <section class="meizu-header-con">
+            <div class="meizu-header-logo">
+                <a href="meizu.html" class="meizu-header-logo-size">MEIZU</a>
+            </div>
+        </section>
+    </section>
+    <section class="cart">
+        <div class="mz-container">
+            <table class="cart-header">
+                <tbody>
+                    <tr>
+                        <td class="cart-col-select">
+                            <div class="cart-select-all JSelectAll" data-mdesc="全选按钮" data-mtype="store_cart_all"
+                                data-bh="click_store_cart_all">
+                                <input type="checkbox" id="master" />
+                                <span class="cart-select-title">全选</span>
+                            </div>
+                        </td>
+                        <td class="cart-col-price">单价(元)</td>
+                        <td class="cart-col-number">数量</td>
+                        <td class="cart-col-total">小计(元)</td>
+                        <td class="cart-col-ctrl" id="J-cartHearCtrl">编辑</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="fushu">
+                <!-- 渲染数据 -->
+            </div>
+            <div class="cart-footer" id="cartFooter">
+                <div class="mzcontainer">
+                    <div class="cart-footer-left">
+                        <div class="cart-select-all JSelectAll" data-mdesc="全选按钮" data-mtype="store_cart_all"
+                            data-bh="click_store_cart_all">
+                            <input type="checkbox" id="master" />
+                            <span class="cart-select-title">全选</span>
+                        </div>
+                        <span class="cart-remove-selected" data-mdesc="删除选中商品" data-mtype="store_cart_batch"
+                            data-bh="click_store_cart_batch" id="removeSelected">删除选中的商品</span>
+                        <span class="cart-footer-count">
+                            共<span class="cart-footer-num" id="totalCount">0</span>件商品，
+                            已选择<span class="cart-footer-num blue" id="totalSelectedCount">0</span>件
+                        </span>
+                    </div>
+                    <div class="cart-footer-right">
+                        <span class="cart-footer-sum">
+                            已优惠<span class="cart-footer-num red" id="totalDiscount">0.00</span>元，
+                            合计(不含运费)：<span class="cart-footer-total" id="totalPrice">0.00</span>
+                        </span>
+                        <div class="mz-btn success to-order-btn" id="cartSubmit" data-mdesc="去结算按钮"
+                            data-mtype="store_cart_checkout" data-bh="click_store_cart_checkout">去结算
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="meizu-footer">
+        <div class="meizu-footer-link">
+            <div class="meizu-footer-wrap">
+                <div class="meizu-footer-top">
+                    <ul class="meizu-footer-service">
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f1.png" alt="">
+                                <span>满80免运费</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f2.png" alt="">
+                                <span>100+ 城市次日送达</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f3.png" alt="">
+                                <span>7天无理由退货</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f4.png" alt="">
+                                <span>15天换货保障</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f5.png" alt="">
+                                <span>1年免费保修</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f6.png" alt="">
+                                <span>上门快修</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="onlive-server meizu-footer-hotline"><span>周一至周日 8:00-20:00</span>
+                        <p class="tel">400-788-3333</p>
+                        <a class="onlive-btn" href="http://url.meizu.com/ols_PC" ">在线客服</a>
+                        </div>
+                    </div>
+                    <hr class=" footer-hr">
+                            <div class="meizu-row">
+                                <div class="meizu-row-info">
+                                    <ul>
+                                        <li><a href="#">了解魅族</a></li>
+                                        <li><a href="#">加入我们</a></li>
+                                        <li><a href="#">联系我们</a></li>
+                                        <li><a href="#">Flyme</a></li>
+                                        <li><a href="#">魅族社区</a></li>
+                                        <li><a href="#">天猫旗舰店</a></li>
+                                        <li><a href="#">问题反馈</a></li>
+                                        <li><a href="#">线上销售授权名单公示</a></li>
+                                        <li><a href="#">出版物经营许可证</a></li>
+                                        <li><a href="#">简体中文</a></li>
+                                    </ul>
+                                    <div class="meizu-footer-certificate">
+                                        ©2019 Meizu Telecom Equipment Co., Ltd. All rights
+                                        reserved.&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="#">粤ICP备13003602号</a>
+                                        <a href="#">合字B2-20170010</a>
+                                        <a href="#">营业执照</a>
+                                        <a href="#">法律声明</a>
+                                        粤公网安备 44049102496009 号
+                                        <div class="foot-sub">
+                                            <a href="#">
+                                                <img src="img/foot/d11.png" alt="">
+                                                <i class="foot-sub-img1"></i>
+                                            </a>
+                                            <a href="#">
+                                                <img src="img/foot/d22.jpg" alt="">
+                                                <i class="foot-sub-img2"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="foot-sub-img3"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="foot-sub-img4"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>『Flyme 账号』-登录</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/Ajax.js"></script>
+    <script>
+        // function events() {
+        //     let _body = document.getElementsByTagName("body")[0];
+        //     let xiala = document.querySelector(".header_language");
+        //     let list = document.querySelector(".changeBox");
+        //     console.log(sign);
+
+        //     xiala.onmousedown = function () {
+        //         list.style.display = "block";
+
+        //     }
+
+        //     _body.onclick = function () {
+        //         list.style.display = "none";
+        //     }
+        // }
+        function events() {
+            let xiala = $(".header_language");
+            let list = $(".changeBox");
+            xiala.click(function () {
+                list.css({
+                    display: "block"
+                })
+            });
+            $(document).bind('click', function (e) {
+                var e = e || window.event; //浏览器兼容性 
+                var elem = e.target || e.srcElement;
+                while (elem) { //循环判断至跟节点，防止点击的是div子元素 
+                    if (elem.id && elem.id == 'test') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                list.css('display', 'none'); //点击的不是div或其子元素 
+            });
+        }
+        function login(t, p) {
+            let _login = $(".primary_btn");
+            let input_1 = $(".input_zone input");
+            let input_2 = $(".input_password input");
+            let denglu=$(".passlogin")
+            let tishi=$(".registerTips")
+            let xian = document.getElementById("xian");
+            xian.onclick = function () {
+                if (input_2[0].type == "password") {
+                    input_2[0].type = "text";
+                    xian.src = "img/yin.png";
+                } else {
+                    input_2[0].type = "password";
+                    xian.src = "img/xian.png";
+                }
+            }
+            input_1.on(" input propertychange", function () {
+                if(input_1.val().length==0){
+                    denglu.css({"opacity": 0.3})
+                    tishi.text("");
+                }
+            })
+            input_2.change( function () {
+                let t = input_1.val();
+                let p = input_2.val();
+                if(p.length>=6){
+                    denglu.css({"opacity": 1})
+                }
+              
+                _login.click(function () {
+                    reader(t, p);
+                })
+            });
+
+
+        }
+        function reader(t, p) {
+            let _ajax = new Ajax();
+            console.log(t)
+            console.log(p)
+            let tishi=$(".registerTips")
+            _ajax.request({
+                method: "GET",
+                url: "js/Sign.php",
+                data: {
+                    id: t,
+                    pwd: p
+                },
+                success: function (_data) {
+                    _data = window.eval("(" + _data + ")");
+                    console.log(t)
+                    if (_data.code == 2000) {
+                        window.location.href = 'meizu.html';
+                    } else {
+                        tishi.text("账号格式错误，请重新输入");
+                    }
+                }
+            });
+        }
+        window.onload = function () {
+            events();
+            login();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="index">
+            <div class="header">
+                <div class="header_wrap">
+                    <div class="header_link"><a href="#">魅族官网</a><a
+                            href="#">Flyme</a><a href="#">云服务</a></div>
+                    <div class="header_language" id="test">简体中文<span class="ic_down"></span>
+                        <div class="changeBox">
+                            <div>简体中文</div>
+                            <div>繁體中文</div>
+                            <div>English</div>
+                        </div>
+                    </div><a class="header_faq" href="javascript:;">帮助中心</a>
+                </div>
+            </div>
+            <div class="box_boxLarge">
+                <div class="boxLarge">
+                    <div class="_logo">Flyme</div>
+                    <p>登录 Flyme 帐号可享受更多的服务</p>
+                </div>
+                <div class="box_content">
+                    <div class="index_content">
+                        <div class="code_icon">
+                            <div class="code_tips">扫码登录</div>
+                            <img src="css/er.png" alt="">
+                        </div>
+                        <div class="tab">
+                            <div class="tab_item active">帐号登录</div>
+                            <!-- <div class="tab_item">扫码登录</div> -->
+                        </div>
+                        <div class="">
+                            <div class="tabloginway">
+                                <p class="on">密码登录</p>
+                                <p class="">短信验证码登录</p>
+                            </div>
+                            <div class="zoneInput">
+                                <div>
+                                    <div class="input_zone">
+                                        <input type="text" autocomplete="off" placeholder="请输入手机号码或邮箱" value="">
+                                    </div>
+                                    <div class="input_password">
+                                        <input autocomplete="off" type="password" placeholder="请输入密码" value="">
+                                        <i><img id="xian" src="img/xian.png" alt=""></i>
+                                        <div class="voice_btn"><span class="forgetpwd">忘记密码</span></div>
+                                    </div>
+                                    <p class="registerTips"></p>
+                                    <div class="passlogin"><button class="primary_btn">登录</button></div>
+                                    <div class="linkContainer">
+                                        <a class="link privacy" href="javascript:;">帐号隐私声明</a>
+                                        <a class="link" href="register.html">注册帐号</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p><span>© 2005 - 2019 魅族 版权所有 粤ICP备14056724号-2</span><span>联系方式：4001-666-888</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

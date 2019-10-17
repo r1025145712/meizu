@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>meizu</title>
+    <link rel="icon" type="image/x-icon" href="img/panda.ico" />
+    <link rel="stylesheet" href="css/meizu.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css" />
+    <script src="js/Ajax.js"></script>
+    <script src="js/ac.js"></script>
+    <script src="js/Cart.js"></script>
+    <script>
+        function over() {
+            let sj = document.querySelector(".meizu-header-list").children[0];
+            let ej = document.querySelector(".meizu-header-list").children[1];
+            let pj = document.querySelector(".meizu-header-list").children[2];
+            let sh = document.querySelector(".meizu-header-list").children[3];
+            let app = document.querySelector(".meizu-header-list").children[8];
+            let phonelb = document.getElementById("header-shop");
+            let sjlb = document.getElementById("meizu-header");
+            sjlb.style.overflow = 'hidden';
+            let slide = {
+                down: function (sjlb, s, c) {
+                    sjlb.style.transition = 'height ' + s + 'ms';
+                    sjlb.style.height = c + "px";
+                    sjlb.style.background = "#fff";
+                },
+                up: function (sjlb, s) {
+                    sjlb.style.transition = 'height ' + 0 + 'ms';
+                    sjlb.style.height = '80px';
+                    sjlb.style.background = "transparent";
+                }
+            }
+            function toggleSlide(id, s, c) {
+                let sjlb = document.getElementById(id);
+                let sjlb_h = sjlb.offsetHeight;
+                sjlb.style.overflow = 'hidden';
+                if (sjlb_h) {
+                    slide.down(sjlb, s, c);
+                }
+                phonelb.onmouseleave = function () {
+                    slide.up(sjlb, s);
+                }
+            }
+            sj.addEventListener('mouseover', function () {
+                toggleSlide('meizu-header', '500', "300")
+                reader();
+            });
+            ej.addEventListener('mouseover', function () {
+                toggleSlide('meizu-header', '500', "300")
+                reader2();
+            });
+            pj.addEventListener('mouseover', function () {
+                toggleSlide('meizu-header', '500', "300");
+                let sign = true;
+                reader2(sign);
+            });
+            sh.addEventListener('mouseover', function () {
+                toggleSlide('meizu-header', '500', "300")
+                reader3();
+            });
+            app.addEventListener('mouseover', function () {
+                toggleSlide('meizu-header', '500', "400")
+                render4();
+            });
+        }
+        function user() {
+            let user = document.querySelector(".meizu-header-user");
+            let userlb = document.querySelector(".meizu-header-user-dropdown");
+            let head = document.querySelector(".meizu-header");
+            let hdlb = document.getElementById("header-shop")
+            console.log(hdlb)
+            user.onmouseenter = function () {
+                userlb.style.display = "block";
+                head.style.overflow = 'visible';
+                hdlb.innerHTML = "";
+            }
+            userlb.onmouseleave = function () {
+                userlb.style.display = "none";
+            }
+        }
+        function render4() {
+            let item = '';
+            item +=
+                ' <img style="width:1240px;height:300px;" src="img/header/app.jpg" alt="">';
+            document.getElementById("header-shop").innerHTML = item;
+        }
+        function reader() {
+            let _ajax = new Ajax();
+            let _page = 'header';
+            _ajax.request({
+                url: "js/reader.php",
+                success: function (_data) {
+                    _data = eval("(" + _data + ")");
+                    render(_data.list, _page);
+                }
+            });
+        }
+        function reader5() {
+            let _ajax = new Ajax();
+            let _page = 'header';
+            _ajax.request({
+                url: "js/reader4.php",
+                success: function (_data) {
+                    _data = eval("(" + _data + ")");
+                    // render(_data.list, _page);
+                    fetch(_data.list);
+                }
+            });
+        }
+        reader5();
+        function fetch(_list) {
+            let shop = document.querySelectorAll("#shangping");
+            let src = '';
+            console.log(shop)
+            for (let i = 0; i < shop.length; i++) {
+                src = 'cart.html?id=' + _list[i].ID;
+                shop[i].href = src;
+            }
+        }
+        function reader2(sign) {
+            let _ajax = new Ajax();
+            let _page = 'erji';
+            _ajax.request({
+                url: "js/reader2.php",
+                success: function (_data) {
+                    _data = eval("(" + _data + ")");
+                    if (sign == true) {
+                        render3(_data.list);
+                    } else {
+                        render2(_data.list, _page);
+                    }
+                }
+            });
+        }
+        function reader3(sign) {
+            let _ajax = new Ajax();
+            let _page = 'life';
+            _ajax.request({
+                url: "js/reader3.php",
+                success: function (_data) {
+                    _data = eval("(" + _data + ")");
+                    render(_data.list, _page);
+                }
+            });
+        }
+        // 头部 手机
+        function render(_list, _page) {
+            // let sjlb = document.getElementById("header-shop");
+            // for (let i = 0; i < _list.length; i++) {   
+            //     sjlb.children[i].children[0].src="img/header/"+_list[i].image;
+            //     sjlb.children[i].children[1].innerHTML =_list[i].name;
+            //     sjlb.children[i].children[2].innerHTML =_list[i].money;
+            // }
+            let item = '';
+            for (let i = 0; i < _list.length; i++) {
+                item +=
+                    '<div class="meizu-header-shop_sj">' +
+                    ' <img src="img/' + _page + '/' + _list[i].image + '" alt="">' +
+                    '<p>' + _list[i].name + '</p>' +
+                    '<span>' + _list[i].money + '</span>' +
+                    '</div>';
+            }
+            document.getElementById("header-shop").innerHTML = item;
+            let sj = document.querySelectorAll(".meizu-header-shop_sj");
+            console.log(sj)
+            let src = '';
+            for (let j = 0; j < sj.length; j++) {
+                sj[j].onclick = function () {
+                    src = 'cart.html?id=' + _list[j].ID;
+                    window.location.href = src;
+                }
+            }
+            sj[1].onclick = function () {
+                src = 'cart.html?id=' + _list[3].ID;
+                window.location.href = src;
+            }
+            sj[3].onclick = function () {
+                src = 'cart.html?id=' + _list[1].ID;
+                window.location.href = src;
+            }
+        }
+        function render2(_list, _page) {
+            let item = '';
+            for (let i = 0; i < 8; i++) {
+                item +=
+                    '<div class="meizu-header-shop_sj">' +
+                    ' <img src="img/' + _page + '/' + _list[i].image + '" alt="">' +
+                    '<p>' + _list[i].name + '</p>' +
+                    '<span>' + _list[i].money + '</span>' +
+                    '</div>';
+            }
+            document.getElementById("header-shop").innerHTML = item;
+        }
+        function render3(_list) {
+            let item = '';
+            for (let i = 8; i < _list.length; i++) {
+                item +=
+                    '<div class="meizu-header-shop_sj">' +
+                    ' <img src="img/erji/' + _list[i].image + '" alt="">' +
+                    '<p>' + _list[i].name + '</p>' +
+                    '<span>' + _list[i].money + '</span>' +
+                    '</div>';
+            }
+            document.getElementById("header-shop").innerHTML = item;
+        }
+        function move() {
+            let banner = document.querySelector(".wrapper-banner");
+            let smallp = document.querySelector(".pagination").children;
+            let index = 0;
+            let timer;
+            function loop() {
+                if (timer) {
+                    window.clearInterval(timer);
+                }
+                timer = window.setInterval(function () {
+                    next_r();
+                }, 5000);
+            };
+            loop();
+            document.addEventListener("visibilitychange", function () {
+                if (!document.hidden) {
+                    //处于当前页面
+                    loop();
+                } else {
+                    clearInterval(timer);
+
+                }
+            });
+            for (let i = 0; i < smallp.length; i++) {
+                smallp[i].onclick = function () {
+                    window.clearInterval(timer);
+                    smallp[i].style.opacity = .4;
+                    smallp[index].style.opacity = 1;
+                    let bl = new Ac(banner);
+                    bl.run({
+                        left: (-1520 * i) + "px",//终点位置
+                    }, 1000);
+                    index = i;
+                    setTimeout(function () {
+                        loop();
+                    }, 3000);
+                }
+            }
+            function next_r() {
+                index++;
+                if (index > 7) {
+                    index = 0;
+                    banner.style.left = 0;
+                }
+                let bl = new Ac(banner);
+                bl.run({
+                    left: -1520 * (index) + "px",//终点位置
+                }, 600);
+                // if (banner.style.left == "-9120px") {
+                //     banner.style.left = 0;
+                // }
+                showCurrentDot();
+            }
+            function showCurrentDot() {
+                for (var i = 0, len = smallp.length; i < len; i++) {
+                    smallp[i].style.opacity = 1;
+                }
+                if (index == 7) {
+                    smallp[0].style.opacity = .4;
+                    return;
+                }
+                smallp[index].style.opacity = .4;
+            }
+        }
+        function load() {
+            var scrollTop = window.scrollY;
+            var con = document.querySelector(".section-box-con")
+            var imgs = Array.from(con.getElementsByTagName("li"));
+            var banner = Array.from(document.querySelectorAll(".section-phone-adv a"));
+            var list = Array.from(document.querySelectorAll(".section-phone-row li"));
+            var clock;
+            window.onscroll = function () {
+                scrollTop = window.scrollY;
+                if (clock) {
+                    clearTimeout(clock);
+                }
+                clock = setTimeout(function () {
+                    lazyLoad();
+                }, 100)
+            }
+            function lazyLoad() {
+                for (let i = 0; i < imgs.length; i++) {
+                    if (imgs[i].offsetTop < window.innerHeight + scrollTop) {
+                        imgs[i].children[0].children[0].setAttribute('src', imgs[i].children[0].children[0].dataset.src)
+                    }
+                }
+                for (let j = 0; j < list.length; j++) {
+                    if (list[j].offsetTop < window.innerHeight + scrollTop) {
+                        list[j].children[0].children[0].children[0].setAttribute('src', list[j].children[0].children[0].children[0].dataset.src)
+                    }
+                }
+                for (let i = 0; i < banner.length; i++) {
+                    if (banner[i].offsetTop < window.innerHeight + scrollTop) {
+                        banner[i].children[0].setAttribute('src', banner[i].children[0].dataset.src);
+                    }
+                }
+
+            }
+        }
+        function css() {
+            let block = document.querySelectorAll(".section-phone-row");
+            block[1].style.height = "1155px";
+            block[2].style.height = "770px";
+            block[3].style.height = "770px";
+        }
+        window.onload = function () {
+            over();
+            user();
+            move();
+            load();
+            css();
+            let _cart1 = new TJCart();
+            document.querySelector(".hua").innerHTML = _cart1.statistics();
+        }
+    </script>
+</head>
+
+<body>
+    <section class="meizu-header" id="meizu-header">
+        <section class="meizu-header-con">
+            <div class="meizu-header-logo">
+                <a href="meizu.html" class="meizu-header-logo-size">MEIZU</a>
+            </div>
+            <a href="pay.html" class="meizu-cart">
+                <i class="iconfont icon-gouwuche"></i>
+                <i class="hua">0</i>
+            </a>
+            <div class="meizu-header-user">
+                <i class="iconfont icon-ren-copy"></i>
+                <ul class="meizu-header-user-dropdown">
+                    <li><a href="login.html" target="_blank" data-mtype="gw_public_yt_center_login">立即登录</a></li>
+                    <li><a href="register.html" target="_blank" data-mtype="gw_public_yt_center_reg">立即注册</a></li>
+                    <li><a href="#" target="_blank" data-mtype="gw_public_yt_center_order_0">我的订单</a></li>
+                    <li><a href="#" target="_blank" data-mtype="gw_public_yt_center_mcode_0">M码通道</a></li>
+                </ul>
+            </div>
+            <div class="meizu-header-input">
+                <input type="text" name="" id="" placeholder="魅族 16s Pro">
+                <a href="">
+                    <i class="iconfont icon-sousuo"></i>
+                </a>
+            </div>
+            <ul class="meizu-header-list">
+                <li><a href="list.html">手机</a></li>
+                <li><a href="#">声学</a></li>
+                <li><a href="#">配件</a></li>
+                <li><a href="#">生活</a></li>
+                <li><a href="#">Flyme</a></li>
+                <li><a href="#">服务</a></li>
+                <li><a href="#">专卖店</a></li>
+                <li><a href="#">社区</a></li>
+                <li><a href="#">App下载</a></li>
+            </ul>
+            <section class="meizu-header-shop" id="header-shop">
+                <!-- <div class="meizu-header-shop_sj">
+                    <img src="img/header/sj8.jpg" alt="">
+                    <p>魅族16s pro</p>
+                    <span>￥2699</span>
+                </div> -->
+            </section>
+        </section>
+    </section>
+    <section class="mz-banner">
+        <div class="mz-banner-con">
+            <div class="mz-container-banner">
+                <div class="wrapper-banner">
+                    <div class="slider-1">
+                        <a href="cart.html?id=1">
+                            <img src="img/banner/1.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="slider-1">
+                        <a href="cart.html?id=3">
+                            <img src="img/banner/2.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="slider-1">
+                        <a href="cart.html?id=4">
+                            <img src="img/banner/3.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="slider-1">
+                        <a href="cart.html?id=2">
+                            <img src="img/banner/4.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="slider-1">
+                        <a href="cart.html?id=6">
+                            <img src="img/banner/5.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="slider-1">
+                        <a href="cart.html?id=8">
+                            <img src="img/banner/6.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="slider-1">
+                        <a href="cart.html?id=11">
+                            <img src="img/banner/7.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="slider-1">
+                        <a href="cart.html?id=1">
+                            <img src="img/banner/1.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <span class="swiper-pagination-switch "></span>
+                    <span class="swiper-pagination-switch"></span>
+                    <span class="swiper-pagination-switch"></span>
+                    <span class="swiper-pagination-switch"></span>
+                    <span class="swiper-pagination-switch"></span>
+                    <span class="swiper-pagination-switch"></span>
+                    <span class="swiper-pagination-switch "></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="index-container">
+        <div class="section-box">
+            <div class="section-box-adv">
+                <ul class="section-box-con">
+                    <li>
+                        <a href="cart.html?id=1" class="box-img">
+                            <img src="" data-src="img/header2/01.png" alt="">
+                            <em>魅族 16s Pro</em>
+                            <p>现货开售</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cart.html?id=3" class="box-img">
+                            <img src="" data-src="img/header2/02.png" alt="">
+                            <em>魅族 16s</em>
+                            <p>限时特惠</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cart.html?id=2" class="box-img">
+                            <img src="" data-src="img/header2/03.jpg" alt="">
+                            <em>魅族 Note9</em>
+                            <p>限时特惠</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="box-img">
+                            <img src="" data-src="img/header2/04.jpg" alt="">
+                            <em>Mcycle</em>
+                            <p>以旧换新</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-phone">
+            <div class="section-title">
+                <h3>手机</h3>
+            </div>
+            <div class="section-phone-adv">
+                <a href="cart.html?id=8">
+                    <img src="" data-src="img/phone/banner.jpg" alt="">
+                </a>
+            </div>
+            <div class="section-phone-row">
+                <div class="section-phone-wrapper">
+                    <ul class="phone-agg">
+                        <li class="phone1">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/01.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 16s&nbsp;Pro</span>
+                                        <span class="goods-desc">高通骁龙 855 Plus | 索尼 4800W 像素超广角 AI 三摄</span>
+                                        <span class="goods-price"><i>￥</i>2699<em></em><s></s></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone2">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/02.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 Note9</span>
+                                        <span class="goods-desc">骁龙675 后置4800万</span>
+                                        <span class="goods-price"><i>￥</i>1199<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone3">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/03.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 16s</span>
+                                        <span class="goods-desc">骁龙855 4800W光学防抖</span>
+                                        <span class="goods-price"><i>￥</i>2699<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone4">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/04.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 16Xs</span>
+                                        <span class="goods-desc">4800W AI三摄 | 屏幕下指纹</span>
+                                        <span class="goods-price"><i>￥</i>1499<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone5">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/05.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 16th</span>
+                                        <span class="goods-desc">骁龙845 屏幕下指纹</span>
+                                        <span class="goods-price"><i>￥</i>2298<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone6">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/06.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 16 X</span>
+                                        <span class="goods-desc">骁龙710 屏幕下指纹 旗舰双摄</span>
+                                        <span class="goods-price"><i>￥</i>1598<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone7">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/07.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 16th Plus</span>
+                                        <span class="goods-desc">骁龙845 屏幕下指纹</span>
+                                        <span class="goods-price"><i>￥</i>2698<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone8">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/08.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 X8</span>
+                                        <span class="goods-desc">骁龙710 旗舰双摄</span>
+                                        <span class="goods-price"><i>￥</i>1298<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone9">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/09.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 16s 白夜童话限量礼盒</span>
+                                        <span class="goods-desc">以梦为马 乘风破浪</span>
+                                        <span class="goods-price"><i>￥</i>3099<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone10">
+                            <div class="section-item-box">
+                                <a href="#" id="shangping">
+                                    <img src="" data-src="img/phone/10.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅蓝 E3</span>
+                                        <span class="goods-desc">骁龙636处理器 全系6G大运存</span>
+                                        <span class="goods-price"><i>￥</i>1799<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 魅族声学 -->
+        <div class="section-phone">
+            <div class="section-title">
+                <h3>魅族声学</h3>
+            </div>
+            <div class="section-phone-adv">
+                <a href="#">
+                    <img src="" data-src="img/phone/banner2.jpg" alt="">
+                </a>
+            </div>
+            <div class="section-phone-row">
+                <div class="section-phone-wrapper">
+                    <ul class="phone-agg">
+                        <li class="earphone">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/erji1.jpg" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 EP3C 耳机</span>
+                                        <span class="goods-desc">Hi-Res 认证高解析音质 | 高保真生物纤维振膜</span>
+                                        <span class="goods-price"><i>￥</i>129<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone3">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx1.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 POP2 真无线蓝牙耳机</span>
+                                        <span class="goods-desc">【限时3期免息】蓝牙5.0 超长续航</span>
+                                        <span class="goods-price"><i>￥</i>399<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone3">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx2.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 HIFI 解码耳放</span>
+                                        <span class="goods-desc">高性能DAC芯片</span>
+                                        <span class="goods-price"><i>￥</i>169<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone4">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx3.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 EP63NC 无线降噪耳机</span>
+                                        <span class="goods-desc">【限时3期免息】智能降噪 声临其境</span>
+                                        <span class="goods-price"><i>￥</i>499<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="earphone">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/erji2.jpg" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 HiFi 解码耳放 PRO</span>
+                                        <span class="goods-desc">高性能DAC芯片 | 超强二级运放 | Hi-Res 认证高解析音质 | 高阻抗推力 </span>
+                                        <span class="goods-price"><i>￥</i>269<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone5">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx4.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 EP2X 耳机</span>
+                                        <span class="goods-desc">契合声音的流动之美</span>
+                                        <span class="goods-price"><i>￥</i>69<em></em><s>￥129</s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone6">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx5.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 EP21-HD耳机</span>
+                                        <span class="goods-desc">小巧圆润 TPE线材</span>
+                                        <span class="goods-price"><i>￥</i>99<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone7">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx6.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 EP52 Lite 蓝牙耳机</span><span
+                                            class="goods-desc">超高性价比创造无线新声代</span>
+                                        <span class="goods-price"><i>￥</i>129<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="earphone">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/erji3.jpg" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 EP2C 耳机</span>
+                                        <span class="goods-desc">钕铁硼单元 Type-C接口</span>
+                                        <span class="goods-price"><i>￥</i>129<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone8">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx7.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 HALO 激光蓝牙耳机</span>
+                                        <span class="goods-desc">夜跑神器 随性张扬</span>
+                                        <span class="goods-price"><i>￥</i>499<em></em><s>￥999</s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone9">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx8.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 LIVE 四单元动铁耳机</span>
+                                        <span class="goods-desc">Knowles四动铁 双通道导音系统</span <span
+                                            class="goods-price"><i>￥</i>1099<em></em><s>￥1299</s>
+                                    </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone10">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/sx9.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 Flow 三单元耳机</span>
+                                        <span class="goods-desc">用得惬意 听得尽兴</span>
+                                        <span class="goods-price"><i>￥</i>379<em></em><s>￥599</s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 智能配件 -->
+        <div class="section-phone">
+            <div class="section-title">
+                <h3>智能配件</h3>
+            </div>
+            <div class="section-phone-adv">
+                <a href="#">
+                    <img src="" data-src="img/phone/banner3.jpg" alt="">
+                </a>
+            </div>
+            <div class="section-phone-row">
+                <div class="section-phone-wrapper">
+                    <ul class="phone-agg">
+                        <li class="earphone">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/pj1.jpg" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 16s&nbsp;Pro 亲肤壳膜套装</span>
+                                        <span class="goods-desc">亲肤亲近，安全防护</span>
+                                        <span class="goods-price"><i>￥</i>39<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone3">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/pj2.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 Micro USB 数据线</span>
+                                        <span class="goods-desc">广泛兼容 经久耐用</span>
+                                        <span class="goods-price"><i>￥</i>29<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone3">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/pj3.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 Micro USB 金属数据线</span>
+                                        <span class="goods-desc">耐用 才好用</span>
+                                        <span class="goods-price"><i>￥</i>29<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone4">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/pj4.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族 Type-C 金属数据线</span>
+                                        <span class="goods-desc">支持2A快速充电 耐用又放心</span>
+                                        <span class="goods-price"><i>￥</i>39<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="earphone">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/pj5.jpg" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">快充电源适配器</span>
+                                        <span class="goods-desc">快速充电 安全无忧</span>
+                                        <span class="goods-price"><i>￥</i>69<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone5">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/pj6.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 X8 高透保护膜</span>
+                                        <span class="goods-desc">高透光率 助双眼捕捉每一颗像素的色彩</span>
+                                        <span class="goods-price"><i>￥</i>19<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone6">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/pj7.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 16X 高透保护膜</span>
+                                        <span class="goods-desc">支持魅族16X屏幕指纹解锁</span>
+                                        <span class="goods-price"><i>￥</i>19<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone7">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/pj8.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 16X 亲肤保护壳</span>
+                                        <span class="goods-desc">轻盈亲近 薄若无形</span>
+                                        <span class="goods-price"><i>￥</i>29<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 生活周边 -->
+        <div class="section-phone">
+            <div class="section-title">
+                <h3>生活周边</h3>
+            </div>
+            <div class="section-phone-adv">
+                <a href="#">
+                    <img src="" data-src="img/phone/banner4.jpg" alt="">
+                </a>
+            </div>
+            <div class="section-phone-row">
+                <div class="section-phone-wrapper">
+                    <ul class="phone-agg">
+                        <li class="earphone">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/zb1.jpg" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族极简都市双肩包</span>
+                                        <span class="goods-desc">650D高耐磨牛津布 大容量多功能收纳</span>
+                                        <span class="goods-price"><i>￥</i>179<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone3">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/zb2.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">Pandaer readnap T恤</span>
+                                        <span class="goods-desc">潮趣设计 | 优质纯棉德国织造 | 亲肤舒适</span>
+                                        <span class="goods-price"><i>￥</i>199<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone3">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/zb3.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族星球探索&nbsp;鼠标垫</span>
+                                        <span class="goods-desc">星球无限 追求不止</span>
+                                        <span class="goods-price"><i>￥</i>69<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone4">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/zb4.png" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">魅族星球探索&nbsp;帆布袋</span>
+                                        <span class="goods-desc">星球无限 追求不止</span>
+                                        <span class="goods-price"><i>￥</i>69<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="earphone">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/zb5.jpg" alt="">
+                                    <span class="box-info ">
+                                        <span class="goods-name">J-BELT</span>
+                                        <span class="goods-desc">J.Wong Design 无级舒适</span>
+                                        <span class="goods-price"><i>￥</i>999<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone5">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/zb6.jpg" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族路由器 极速版</span>
+                                        <span class="goods-desc">天生不凡 快狠稳</span>
+                                        <span class="goods-price"><i>￥</i>99<em></em><s>￥199</s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone6">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/zb7.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">魅族 Mini 线控自拍杆</span>
+                                        <span class="goods-desc">轻巧迷你 自在随心</span>
+                                        <span class="goods-price"><i>￥</i>59<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="phone7">
+                            <div class="section-item-box">
+                                <a href="#">
+                                    <img src="" data-src="img/phone/zb8.png" alt="">
+                                    <span class="box-info">
+                                        <span class="goods-name">Everyday 乐游系列 酷 MA 萌定制版</span>
+                                        <span class="goods-desc">萌友为伴，为出行添点乐趣</span>
+                                        <span class="goods-price"><i>￥</i>599<em></em><s></s>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="meizu-footer">
+        <div class="meizu-footer-link">
+            <div class="meizu-footer-wrap">
+                <div class="meizu-footer-top">
+                    <ul class="meizu-footer-service">
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f1.png" alt="">
+                                <span>满80免运费</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f2.png" alt="">
+                                <span>100+ 城市次日送达</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f3.png" alt="">
+                                <span>7天无理由退货</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f4.png" alt="">
+                                <span>15天换货保障</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f5.png" alt="">
+                                <span>1年免费保修</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="img/foot/f6.png" alt="">
+                                <span>上门快修</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="onlive-server meizu-footer-hotline"><span>周一至周日 8:00-20:00</span>
+                        <p class="tel">400-788-3333</p>
+                        <a class="onlive-btn" href="http://url.meizu.com/ols_PC" ">在线客服</a>
+                    </div>
+                </div>
+                <hr class=" footer-hr">
+                            <div class="meizu-row">
+                                <div class="meizu-row-info">
+                                    <ul>
+                                        <li><a href="#">了解魅族</a></li>
+                                        <li><a href="#">加入我们</a></li>
+                                        <li><a href="#">联系我们</a></li>
+                                        <li><a href="#">Flyme</a></li>
+                                        <li><a href="#">魅族社区</a></li>
+                                        <li><a href="#">天猫旗舰店</a></li>
+                                        <li><a href="#">问题反馈</a></li>
+                                        <li><a href="#">线上销售授权名单公示</a></li>
+                                        <li><a href="#">出版物经营许可证</a></li>
+                                        <li><a href="#">简体中文</a></li>
+                                    </ul>
+                                    <div class="meizu-footer-certificate">
+                                        ©2019 Meizu Telecom Equipment Co., Ltd. All rights
+                                        reserved.&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="#">粤ICP备13003602号</a>
+                                        <a href="#">合字B2-20170010</a>
+                                        <a href="#">营业执照</a>
+                                        <a href="#">法律声明</a>
+                                        粤公网安备 44049102496009 号
+                                        <div class="foot-sub">
+                                            <a href="#">
+                                                <img src="img/foot/d11.png" alt="">
+                                                <i class="foot-sub-img1"></i>
+                                            </a>
+                                            <a href="#">
+                                                <img src="img/foot/d22.jpg" alt="">
+                                                <i class="foot-sub-img2"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="foot-sub-img3"></i>
+                                            </a>
+                                            <a href="#">
+                                                <i class="foot-sub-img4"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+<script>
+    let foot = Array.from(document.querySelectorAll(".foot-sub i"));
+    let foot1 = Array.from(document.querySelectorAll(".foot-sub img"));
+    let src = '';
+    for (let i = 0; i < foot.length; i++) {
+        foot[i].onmouseover = function () {
+            src = 'img/foot/d0' + (i + 1) + '.png';
+            foot[i].style.background = 'url(' + src + ')';
+            foot[i].style.backgroundRepeat = "no-repeat";
+            foot[i].style.backgroundPosition = "50%";
+            foot[i].style.backgroundSize = "100%";
+            foot1[i].style.display = "block";
+        }
+        foot[i].onmouseout = function () {
+            src = 'img/foot/d' + (i + 1) + '.png';
+            foot[i].style.background = 'url(' + src + ')';
+            foot[i].style.backgroundRepeat = "no-repeat";
+            foot[i].style.backgroundPosition = "50%";
+            foot[i].style.backgroundSize = "100%";
+            foot1[i].style.display = "none";
+        }
+    }
+</script>
+
+</html>
